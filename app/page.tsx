@@ -11,7 +11,7 @@ export default function Home() {
         }}
         >
           <h1 className="text-[24px] text-center px-3 font-bold">Ваши идеи - наши заботы</h1>
-          <button className="border-2 border-black py-3 w-[240px] mt-5"><p className="text-[20px]">Перейти</p></button>
+          <button className="border-2 border-black py-3 w-[300px] mt-5"><p className="text-[20px]">Перейти</p></button>
         </div>
       </section>
       <section className="w-full">
