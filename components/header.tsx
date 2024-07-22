@@ -42,7 +42,7 @@ function Header() {
               transform: showCollection ? "rotate(180deg)" : "rotate(0deg)"
             }}/>
           </div>
-          <div className="overflow-hidden ml-4" style={{height: !showCollection ? "0" : "25px", transition: ".5s ease"}}>
+          <div className="overflow-hidden ml-4" style={{height: !showCollection ? "0" : "30px", transition: ".5s ease"}}>
             <p className="cursor-pointer font-normal">WAXIO / BRITVA</p>
           </div>
           <p className="cursor-pointer text-[20px] mt-4">На заказ</p>
