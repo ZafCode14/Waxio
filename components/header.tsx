@@ -28,7 +28,7 @@ function Header() {
               transform: showType ? "rotate(180deg)" : "rotate(0deg)"
             }}/>
           </div>
-          <div className="overflow-hidden ml-4" style={{height: !showType ? "0" : "180px", transition: ".5s ease"}}>
+          <div className="overflow-hidden ml-4" style={{height: !showType ? "0" : "190px", transition: ".5s ease"}}>
             <p className="cursor-pointer font-normal py-1">Кольца</p>
             <p className="cursor-pointer font-normal py-1">Подвески</p>
             <p className="cursor-pointer font-normal py-1">Браслеты</p>
