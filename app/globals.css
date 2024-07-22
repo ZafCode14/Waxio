@@ -5,4 +5,52 @@
 p {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
+  font-size: 16px;
+  padding: 8px 0
+}
+h6 {
+  font-weight: bold;
+  font-size: 16px;
+}
+h5 {
+  font-weight: bold;
+  font-size: 18px;
+}
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+h1 {
+  font-weight: bold;
+}
+.bg-color-white {
+  background-color: rgb(233, 233, 233);
+}
+.bg-color-black {
+  background-color: rgb(17, 17, 17);
+}
+.text-color-black {
+  color: rgb(17, 17, 17);
+}
+.text-color-white {
+  color: rgb(216, 216, 216);
+}
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  cursor: pointer;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px;    /* Roundness of the scrollbar thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
 }

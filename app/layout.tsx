@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.svg"/>
       </head>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={`${inter.className} bg-color-white`} suppressHydrationWarning={true}>
         <Header/>
         {children}
         <Footer/>
