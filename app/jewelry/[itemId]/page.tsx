@@ -11,12 +11,13 @@ interface Props {
 const ItemPage = ({ params }: Props) => {
   const { itemId } = params;
 
-  if (itemId > 8 || isNaN(itemId)) {
+  if (itemId > 29 || isNaN(itemId)) {
     notFound();
   }
 
   return (
     <main className="flex min-h-screen flex-col">
+      <h1 className='mt-20'>{data[itemId].collection}</h1>
       <div className="h-[500px] flex justify-center items-center bg-[#D9D9D9]">
         <Image alt="image" src="/images/image.svg" height={100} width={100} className="w-full h-auto"/>
       </div>

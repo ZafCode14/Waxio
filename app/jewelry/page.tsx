@@ -18,38 +18,47 @@ function Jewelryyy() {
   const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other", "all"];
   const types = ["ring", "pendant", "bracelet", "earring", "accessory", "all"];
 
-  let collectionName;
-  let typeName;
 
-  if (selectedCollection === "skeleton") {
-    collectionName = "SKELETON";
-  } else if (selectedCollection === "geometric") {
-    collectionName = "GEOMETRIC";
-  } else if (selectedCollection === "waxio-britva") {
-    collectionName = "WAXIO / BRITVA";
-  } else if (selectedCollection === "pohui") {
-    collectionName = "POHUI";
-  } else if (selectedCollection === "fracture") {
-    collectionName = "FRACTURE";
-  } else if (selectedCollection === "other") {
-    collectionName = "Другое"
-  } else if (selectedCollection === "all") {
-    collectionName = "Все Коллекции"
+  const turnCollectionToName = (collection: string) => {
+    let collectionName;
+
+    if (collection === "skeleton") {
+      collectionName = "SKELETON";
+    } else if (collection === "geometric") {
+      collectionName = "GEOMETRIC";
+    } else if (collection === "waxio-britva") {
+      collectionName = "WAXIO / BRITVA";
+    } else if (collection === "pohui") {
+      collectionName = "POHUI";
+    } else if (collection === "fracture") {
+      collectionName = "FRACTURE";
+    } else if (collection === "other") {
+      collectionName = "Другое"
+    } else if (collection === "all") {
+      collectionName = "Все Коллекции"
+    }
+    return collectionName;
   }
 
-  if (selectedType === "ring") {
-    typeName = "Кольца";
-  } else if (selectedType === "pendant") {
-    typeName = "Подвески";
-  } else if (selectedType === "bracelet") {
-    typeName = "Браслеты";
-  } else if (selectedType === "earring") {
-    typeName = "Серьги";
-  } else if (selectedType === "accessory") {
-    typeName = "Аксессуары"
-  } else if (selectedType === "all") {
-    typeName = "Все Аксессуары"
+  const turnTypeToname = (type: string) => {
+    let typeName;
+
+    if (type === "ring") {
+      typeName = "Кольца";
+    } else if (type === "pendant") {
+      typeName = "Подвески";
+    } else if (type === "bracelet") {
+      typeName = "Браслеты";
+    } else if (type === "earring") {
+      typeName = "Серьги";
+    } else if (type === "accessory") {
+      typeName = "Аксессуары"
+    } else if (type === "all") {
+      typeName = "Все"
+    }
+    return typeName;
   }
+
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -66,7 +75,6 @@ function Jewelryyy() {
     setSelectedCollection(collection);
     setSelectedType(type);
   }, [searchParams]);
-
 
   const sortedDataDesc = Object.entries(data)
   .filter(([key, item]) => {
@@ -98,12 +106,14 @@ function Jewelryyy() {
 
   return (
     <main className="flex min-h-screen flex-col px-3">
-      <p className="mt-20">Украшения &gt; {collectionName} &gt; {typeName}</p>
+      <p className="mt-20">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
       <div className="flex w-full justify-between items-start mb-10">
         <div className="flex-col">
           <div className="flex items-center" onClick={handleSort}>
             <p>Сортировать</p>
-            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2"/>
+            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
+              transform: showSort ? "rotate(180deg)" : "rotate(0)"
+            }}/>
           </div>
           <div className={`overflow-hidden`} style={{
             height: !showSort ? "0px" : "70px",
@@ -116,53 +126,55 @@ function Jewelryyy() {
                 checked={sort === true}
                 onChange={() => setSort(true)}
               />
-              <label htmlFor="sort-asc" className="ml-1">Дороже</label>
+              <label htmlFor="sort-asc" className="ml-1 text-[12px]">Дороже</label>
             </div>
-            <div className="flex">
+            <div className="flex my-1">
               <input
                 id="sort-desc"
                 type="checkbox"
                 checked={sort === false}
                 onChange={() => setSort(false)}
               />
-              <label htmlFor="sort-desc" className="ml-1">Дешевле</label>
+              <label htmlFor="sort-desc" className="ml-1 text-[12px]">Дешевле</label>
             </div>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex items-center" onClick={handleFilter}>
             <p>Фильтр</p>
-            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2"/>
+            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
+              transform: showFilter ? "rotate(180deg)" : "rotate(0)"
+            }}/>
           </div>
           <div className={`flex overflow-hidden`} style={{
             transition: ".4s ease",
-            height: !showFilter ? "0px" : "230px"
+            height: !showFilter ? "0px" : "200px"
             }}>
             <div className="mr-6 flex-col">
               <p>Украшения</p>
               {types.map(type => (
-                <div key={type}>
+                <div key={type} className="flex items-center my-1">
                   <input
                     type="checkbox"
                     id={`type-${type}`}
                     checked={selectedType === type}
                     onChange={() => setSelectedType(type)}
                   />
-                  <label htmlFor={`type-${type}`} className="ml-1">{type}</label>
+                  <label htmlFor={`type-${type}`} className="ml-1 text-[12px]">{turnTypeToname(type)}</label>
                 </div>
               ))}
             </div>
             <div>
               <p>Коллекции</p>
               {collections.map(collection => (
-                <div key={collection}>
+                <div key={collection} className="flex items-center my-1">
                   <input
                     type="checkbox"
                     id={`collection-${collection}`}
                     checked={selectedCollection === collection}
                     onChange={() => setSelectedCollection(collection)}
                   />
-                  <label htmlFor={`collection-${collection}`} className="ml-1">{collection}</label>
+                  <label htmlFor={`collection-${collection}`} className="ml-1 text-[12px]">{turnCollectionToName(collection)}</label>
                 </div>
               ))}
               <div>
