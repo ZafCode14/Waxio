@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import data from "@/data/items";
 import { useEffect, useState } from "react";
+import { Suspense } from "react";
 
-export default function Jewelry() {
+function Jewelryyy() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedCollection, setSelectedCollection] = useState(searchParams.get('collection') || 'all')
@@ -201,4 +202,13 @@ export default function Jewelry() {
       </div>
     </main>
   );
+}
+
+export default function Jewelry() {
+  return (
+    // You could have a loading skeleton as the `fallback` too
+    <Suspense>
+      <Jewelryyy />
+    </Suspense>
+  )
 }
