@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import data from '@/data/collection1-data';
+import data from '@/data/items';
 
 interface Props {
   params: {
