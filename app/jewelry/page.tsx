@@ -109,14 +109,14 @@ function Jewelryyy() {
       <p className="mt-20">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
       <div className="flex w-full justify-between items-start mb-10">
         <div className="flex-col">
-          <div className="flex items-center" onClick={handleSort}>
+          <div className="flex items-center relative" onClick={handleSort}>
             <p>Сортировать</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showSort ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div className={`overflow-hidden`} style={{
-            height: !showSort ? "0px" : "70px",
+          <div className={`overflow-hidden absolute bg-[#d6d6d6] px-3 rounded-md`} style={{
+            height: !showSort ? "0px" : "60px",
             transition: ".4s ease"
           }}>
             <div className="flex mt-2">
@@ -140,13 +140,13 @@ function Jewelryyy() {
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="flex items-center" onClick={handleFilter}>
+          <div className="flex items-center justify-end relative" onClick={handleFilter}>
             <p>Фильтр</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div className={`flex overflow-hidden`} style={{
+          <div className={`flex overflow-hidden absolute right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
             transition: ".4s ease",
             height: !showFilter ? "0px" : "200px"
             }}>
