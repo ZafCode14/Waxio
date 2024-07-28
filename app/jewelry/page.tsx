@@ -14,10 +14,42 @@ function Jewelryyy() {
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [sort, setSort] = useState(false);
+  const [width, setWidth] = useState(0);
 
   const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other", "all"];
   const types = ["ring", "pendant", "bracelet", "earring", "accessory", "all"];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    handleResize();
+
+    window.scrollTo(0, 0);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('collection', selectedCollection);
+    params.set('type', selectedType);
+    router.replace(`/jewelry?${params.toString()}`)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCollection, selectedType, router])
+
+  // New effect to update state when URL params change
+  useEffect(() => {
+    const collection = searchParams.get('collection') || 'all';
+    const type = searchParams.get('type') || 'all';
+    setSelectedCollection(collection);
+    setSelectedType(type);
+  }, [searchParams]);
 
   const turnCollectionToName = (collection: string) => {
     let collectionName;
@@ -59,23 +91,6 @@ function Jewelryyy() {
     return typeName;
   }
 
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    params.set('collection', selectedCollection);
-    params.set('type', selectedType);
-    router.replace(`/jewelry?${params.toString()}`)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCollection, selectedType, router])
-
-  // New effect to update state when URL params change
-  useEffect(() => {
-    const collection = searchParams.get('collection') || 'all';
-    const type = searchParams.get('type') || 'all';
-    setSelectedCollection(collection);
-    setSelectedType(type);
-  }, [searchParams]);
-
   const sortedDataDesc = Object.entries(data)
   .filter(([key, item]) => {
     // Check if type or collection is 'all' or matches the item
@@ -105,7 +120,9 @@ function Jewelryyy() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col px-3">
+    <main className="flex min-h-screen flex-col px-3 items-center" style={{
+      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+    }}>
       <p className="mt-20">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
       <div className="flex w-full justify-between items-start mb-10">
         <div className="flex-col">
@@ -146,7 +163,7 @@ function Jewelryyy() {
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div className={`flex overflow-hidden absolute right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
+          <div className={`flex overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
             transition: ".4s ease",
             height: !showFilter ? "0px" : "200px"
             }}>
@@ -183,7 +200,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-between w-[700px] max-w-[100%]">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType === 'all' || item.type === selectedType;
@@ -195,7 +212,7 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="w-[48%] mb-10 flex-col items-center text-center">
+            <div key={key} className="max-w-[45%] w-[190px] min-w-[190px] mx-2 mb-10 flex-col items-center text-center">
               <Link
                 href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
                 className="bg-gray-300 h-[200px] flex justify-center items-center mb-3"
@@ -206,7 +223,7 @@ function Jewelryyy() {
                 }}
               >
               </Link>
-              <p className="p-0">{item.title}</p>
+              <p className="p-0 font-normal">{item.title}</p>
               <p className="p-0">{formatPrice(item.price)} руб</p>
             </div>
           ) : null;

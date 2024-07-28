@@ -1,6 +1,29 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export default function About() {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    handleResize();
+
+    window.scrollTo(0, 0);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <main className="flex flex-col items-center justify-center mx-3 font-bold text-[#494949] min-h-[80vh]">
+    <main className="flex flex-col items-center justify-center mx-3 font-bold text-[#494949] min-h-[80vh]" style={{
+      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+    }}>
       <h1 className="mt-20 mb-2 text-center text-[20px] text-black">WAXIO - больше, чем просто украшения.</h1>
       <div className="flex flex-col md:w-[500px]">
         <div className="w-full border border-black"></div>

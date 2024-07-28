@@ -22,7 +22,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className=" flex flex-col items-center justify-start mx-3 min-h-[78vh]">
+    <main className=" flex flex-col items-center justify-start px-3" style={{
+      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+    }}>
       <section className="w-full h-[600px] bg-color-white mb-3">
         <div className="flex flex-col justify-end items-center p-3 h-full"
         style={{
@@ -36,36 +38,36 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="w-full flex flex-col md:flex-row md:h-[400px]">
-        <Link href={"/jewelry?collection=waxio-britva&type=all"} className="h-[210px] w-full flex justify-center items-center mb-3" style={{
+      <section className="w-full flex flex-col md:flex-row flex-wrap md:justify-between">
+        <Link href={"/jewelry?collection=waxio-britva&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
           backgroundImage: "url(./images/photo_0x03.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}>
           <p className="text-[white] text-[20px]">WAXIO / BRITVA</p>
         </Link>
-        <Link href={"/jewelry?collection=skeleton&type=all"} className="h-[210px] w-full flex justify-center items-center mb-3 md:mx-3" style={{
+        <Link href={"/jewelry?collection=skeleton&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
           backgroundImage: "url(./images/photo_0x04.png)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}>
           <p className="text-[white] text-[20px]">SKELETON</p>
         </Link>
-        <Link href={"/jewelry?collection=geometric&type=all"} className="h-[210px] w-full flex justify-center items-center mb-3" style={{
+        <Link href={"/jewelry?collection=geometric&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%]" style={{
           backgroundImage: "url(./images/photo_0x05.png)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}>
           <p className="text-[white] text-[20px]">GEOMETRIC</p>
         </Link>
-        <Link href={"/jewelry?collection=pohui&type=all"} className="h-[210px] w-full flex justify-center items-center mb-3" style={{
+        <Link href={"/jewelry?collection=pohui&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
           backgroundImage: "url(./images/photo_0x06.png)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}>
           <p className="text-[white] text-[20px]">POHUI</p>
         </Link>
-        <Link href={"/jewelry?collection=fracture&type=all"} className="h-[210px] w-full flex justify-center items-center mb-3" style={{
+        <Link href={"/jewelry?collection=fracture&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
           backgroundImage: "url(./images/photo_0x07.png)",
           backgroundSize: "cover",
           backgroundPosition: "center"
