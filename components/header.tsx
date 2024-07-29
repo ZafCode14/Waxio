@@ -42,9 +42,9 @@ function Header() {
 
   return (
     <header className="w-full h-[70px] text-black fixed top-0 px-3 z-50 border-b-2 border-b-black bg-color-white">
-      <div className="absolute bg-color-white w-[300px] h-screen border-l border-l-black flex flex-col items-end" style={{right: showNav ? "0" : `${width > 1024 ? "0" : "-300px"}`, transition: ".4s ease"}}>
+      <div className="absolute bg-color-white w-[300px] h-screen border-l border-l-black flex flex-col items-end" style={{right: showNav ? "0" : `${width >= 1024 ? "0" : "-300px"}`, transition: ".4s ease"}}>
         <Image src={"/icons/x.svg"} width={"100"} height={"100"} alt="exit" className="h-[20px] w-[20px] m-4 cursor-pointer" onClick={handleNav} priority style={{
-          display: width > 1024 ? "none" : "block"
+          display: width >= 1024 ? "none" : "block"
         }}/>
         <div className="flex-1 flex flex-col self-start ml-[50px] w-full mt-5">
           <div className="flex flex-col relative cursor-pointer justify-center lg:mt-14" onClick={handleType}>

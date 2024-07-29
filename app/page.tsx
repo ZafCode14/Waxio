@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main className=" flex flex-col items-center justify-start px-3" style={{
-      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <section className="w-full h-[600px] bg-color-white mb-3">
         <div className="flex flex-col justify-end items-center p-3 h-full"

@@ -121,9 +121,9 @@ function Jewelryyy() {
 
   return (
     <main className="flex min-h-screen flex-col px-3 items-center" style={{
-      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
-      <p className="mt-20">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
+      <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
       <div className="flex w-full justify-between items-start mb-10">
         <div className="flex-col">
           <div className="flex items-center relative" onClick={handleSort}>
@@ -200,7 +200,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between w-[700px] max-w-[100%]">
+      <div className="flex flex-wrap w-[900px] max-w-[100%]">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType === 'all' || item.type === selectedType;
@@ -212,10 +212,10 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="max-w-[45%] w-[190px] min-w-[190px] mx-2 mb-10 flex-col items-center text-center">
+            <div key={key} className="max-w-[45%] w-[170px] mx-[2.5%] mb-10 flex-col items-center text-center">
               <Link
                 href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
-                className="bg-gray-300 h-[200px] flex justify-center items-center mb-3"
+                className="bg-gray-300 h-[170px] flex justify-center items-center mb-3"
                 style={{
                   backgroundColor: "gray",  // Example: use the first photo URL for background
                   backgroundSize: "cover",

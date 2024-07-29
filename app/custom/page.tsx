@@ -22,9 +22,9 @@ export default function Custom() {
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold" style={{
-      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
-      <div className="md:w-[900px] flex flex-col">
+      <div className="max-w-[100%] md:w-[900px] flex flex-col">
         <p className="mt-20">Помимо украшений нашего бренда, мы также готовы выполнить индивидуальный заказ. Наша команда поможет воплотить вашу идею в реальность, создав украшение, которое в точности отразит ваш стиль и индивидуальность. </p>
         <p>Создание уникального украшения — это весьма кропотливый процесс, состоящий из нескольких этапов. </p>
         <h4 className="mt-5">Визуализация мечты</h4>

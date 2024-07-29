@@ -21,7 +21,7 @@ function Footer() {
 
     return (
         <footer className="relative w-full bg-color-white flex flex-col justify-center items-center text-black border-t-2 border-t-black pt-5 mt-3" style={{
-      width: width > 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
             <div className="flex flex-col items-center border-t-2 border-black w-[80%] pb-4">
                 <Image src={"/icons/waxio.svg"} width={"100"} height={"100"} alt="exit" className="h-[auto] w-[150px] m-4 cursor-pointer"/>
