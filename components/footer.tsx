@@ -24,13 +24,17 @@ function Footer() {
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
             <div className="flex flex-col items-center border-t-2 border-black w-[80%] pb-4">
-                <Image src={"/icons/waxio.svg"} width={"100"} height={"100"} alt="exit" className="h-[auto] w-[150px] m-4 cursor-pointer"/>
+                <Link href={"/"}>
+                  <Image src={"/icons/waxio.svg"} width={"100"} height={"100"} alt="exit" className="h-[auto] w-[150px] m-4 cursor-pointer"/>
+                </Link>
                 <Link href={'/about'}>
                     <p className="text-[20px] cursor-pointer">О бренде</p>
                 </Link>
             </div>
             <div className="bg-color-black h-[100px] w-full flex justify-between items-center">
-                <Image src={"/icons/logo.svg"} width={"100"} height={"100"} alt="exit" className="h-[60px] w-[60px] m-4 cursor-pointer"/>
+                <Link href={"/"}>
+                  <Image src={"/icons/logo.svg"} width={"100"} height={"100"} alt="exit" className="h-[60px] w-[60px] m-4 cursor-pointer"/>
+                </Link>
                 <div className="flex">
                     <Image src={"/icons/telegram.svg"} width={"100"} height={"100"} alt="exit" className="h-[40px] w-[40px] m-4 cursor-pointer"/>
                     <Image src={"/icons/vk.svg"} width={"100"} height={"100"} alt="exit" className="h-[40px] w-[40px] m-4 cursor-pointer"/>

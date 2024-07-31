@@ -126,7 +126,7 @@ function Jewelryyy() {
       <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
       <div className="flex w-full justify-between items-start mb-10">
         <div className="flex-col">
-          <div className="flex items-center relative" onClick={handleSort}>
+          <div className="flex items-center relative cursor-pointer" onClick={handleSort}>
             <p>Сортировать</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showSort ? "rotate(180deg)" : "rotate(0)"
@@ -157,7 +157,7 @@ function Jewelryyy() {
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="flex items-center justify-end relative" onClick={handleFilter}>
+          <div className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
             <p>Фильтр</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
@@ -200,7 +200,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap w-[900px] max-w-[100%]">
+      <div className="flex flex-wrap w-[900px] max-w-[100%] justify-center">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType === 'all' || item.type === selectedType;
@@ -212,10 +212,10 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="max-w-[45%] w-[170px] mx-[2.5%] mb-10 flex-col items-center text-center">
+            <div key={key} className="max-w-[45%] w-[170px] mx-[2.5%] md:w-[240px] mb-10 flex-col items-center text-center">
               <Link
                 href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
-                className="bg-gray-300 h-[170px] flex justify-center items-center mb-3"
+                className="bg-gray-300 h-[170px] md:h-[240px] flex justify-center items-center mb-3"
                 style={{
                   backgroundColor: "gray",  // Example: use the first photo URL for background
                   backgroundSize: "cover",

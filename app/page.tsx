@@ -28,7 +28,7 @@ export default function Home() {
       <section className="w-full h-[600px] bg-color-white mb-3">
         <div className="flex flex-col justify-end items-center p-3 h-full"
         style={{
-          backgroundImage: width < 700 ? "url(./images/photo_0x01.png)" : "url(./images/photo_0x02.png)",
+          backgroundImage: width < 700 ? "url('/images/photo_0x01.png')" : "url('/images/photo_0x02.png')",
           backgroundSize: "cover"
         }}
         >
@@ -39,38 +39,38 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full flex flex-col md:flex-row flex-wrap md:justify-between">
-        <Link href={"/jewelry?collection=waxio-britva&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
-          backgroundImage: "url(./images/photo_0x03.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+        <Link href={"/jewelry?collection=waxio-britva&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+          backgroundImage: "url('/images/photo_0x03.jpg')",
+          backgroundPosition: "center",
+          transition: ".4s ease", 
         }}>
           <p className="text-[white] text-[20px]">WAXIO / BRITVA</p>
         </Link>
-        <Link href={"/jewelry?collection=skeleton&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
-          backgroundImage: "url(./images/photo_0x04.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+        <Link href={"/jewelry?collection=skeleton&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+          backgroundImage: "url('/images/photo_0x04.png')",
+          backgroundPosition: "center",
+          transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">SKELETON</p>
         </Link>
-        <Link href={"/jewelry?collection=geometric&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%]" style={{
-          backgroundImage: "url(./images/photo_0x05.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+        <Link href={"/jewelry?collection=geometric&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] bg-[length:100%] hover:bg-[length:120%]" style={{
+          backgroundImage: "url('/images/photo_0x05.png')",
+          backgroundPosition: "center",
+          transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">GEOMETRIC</p>
         </Link>
-        <Link href={"/jewelry?collection=pohui&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
-          backgroundImage: "url(./images/photo_0x06.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+        <Link href={"/jewelry?collection=pohui&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+          backgroundImage: "url('/images/photo_0x06.png')",
+          backgroundPosition: "center",
+          transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">POHUI</p>
         </Link>
-        <Link href={"/jewelry?collection=fracture&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%]" style={{
-          backgroundImage: "url(./images/photo_0x07.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+        <Link href={"/jewelry?collection=fracture&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+          backgroundImage: "url('/images/photo_0x07.png')",
+          backgroundPosition: "center",
+          transition: ".4s ease",
         }}>
           <p className="text-[white] text-[20px]">FRACTURE</p>
         </Link>
