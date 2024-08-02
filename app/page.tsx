@@ -33,7 +33,7 @@ export default function Home() {
         }}
         >
           <h1 className="text-[22px] text-center px-3 font-bold">Ваши идеи - наши заботы</h1>
-          <Link href={'/custom'}>
+          <Link className="w-full flex justify-center" href={'/custom'}>
             <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white max-w-[90%]"><p className="text-[20px]">Перейти</p></button>
           </Link>
         </div>

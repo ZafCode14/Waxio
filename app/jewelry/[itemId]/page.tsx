@@ -82,16 +82,16 @@ const ItemPage = ({ params }: Props) => {
     <main className="flex flex-col items-center min-h-screen px-3 max-w-screen" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
-      <div className='w-[800px] max-w-full'>
+      <div className='w-[800px] max-w-full flex flex-col'>
         <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
-        <div className='w-[400px] h-[400px] max-w-full bg-[gray]'>
+        <div className='w-[400px] h-[400px] max-w-full'>
+          <Image src={`/images/items/${itemId}/photo1.png`} width={"2000"} height={"2000"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer" priority/>
         </div>
         <p>{data[itemId].title}</p>
         <p>{formatPrice(data[itemId].price)} руб</p>
-        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white"
+        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start"
         style={{transition: ".4s ease"}}
         >Заказать</button>
-        <div className='w-full h-0 border-b-2 border-black my-5'></div>
         <p>Описание</p>
         <p className='font-normal' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
         </div>

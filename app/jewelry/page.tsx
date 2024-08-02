@@ -124,38 +124,7 @@ function Jewelryyy() {
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
-      <div className="flex w-full justify-between items-start mb-10">
-        <div className="flex-col">
-          <div className="flex items-center relative cursor-pointer" onClick={handleSort}>
-            <p>Сортировать</p>
-            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
-              transform: showSort ? "rotate(180deg)" : "rotate(0)"
-            }}/>
-          </div>
-          <div className={`overflow-hidden absolute bg-[#d6d6d6] px-3 rounded-md`} style={{
-            height: !showSort ? "0px" : "60px",
-            transition: ".4s ease"
-          }}>
-            <div className="flex mt-2">
-              <input
-                id="sort-asc"
-                type="checkbox"
-                checked={sort === true}
-                onChange={() => setSort(true)}
-              />
-              <label htmlFor="sort-asc" className="ml-1 text-[12px]">Дороже</label>
-            </div>
-            <div className="flex my-1">
-              <input
-                id="sort-desc"
-                type="checkbox"
-                checked={sort === false}
-                onChange={() => setSort(false)}
-              />
-              <label htmlFor="sort-desc" className="ml-1 text-[12px]">Дешевле</label>
-            </div>
-          </div>
-        </div>
+      <div className="flex w-full justify-end items-start mb-10">
         <div className="flex flex-col">
           <div className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
             <p>Фильтр</p>
@@ -200,7 +169,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap w-[900px] max-w-[100%] justify-center">
+      <div className="flex flex-wrap w-[900px] max-w-[100%] justify-around">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType === 'all' || item.type === selectedType;
@@ -212,7 +181,7 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="max-w-[45%] w-[170px] mx-[2.5%] md:w-[240px] mb-10 flex-col items-center text-center">
+            <div key={key} className="max-w-50%] w-[170px] md:w-[240px] mb-10 flex-col items-center text-center">
               <Link
                 href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
                 className="bg-gray-300 h-[170px] md:h-[240px] flex justify-center items-center mb-3"
@@ -222,6 +191,7 @@ function Jewelryyy() {
                   backgroundPosition: "center",
                 }}
               >
+                <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} className="h-full w-full cursor-pointer" priority/>
               </Link>
               <p className="p-0 font-normal">{item.title}</p>
               <p className="p-0">{formatPrice(item.price)} руб</p>
