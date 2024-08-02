@@ -181,10 +181,10 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="max-w-50%] w-[170px] md:w-[240px] mb-10 flex-col items-center text-center">
+            <div key={key} className="w-[200px] max-w-[47%] md:w-[240px] mb-10 flex-col items-center text-center">
               <Link
                 href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
-                className="bg-gray-300 h-[170px] md:h-[240px] flex justify-center items-center mb-3"
+                className="h-[200px] md:h-[240px] flex justify-center items-center mb-3"
                 style={{
                   backgroundColor: "gray",  // Example: use the first photo URL for background
                   backgroundSize: "cover",
