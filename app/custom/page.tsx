@@ -21,25 +21,25 @@ export default function Custom() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold" style={{
+    <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black" style={{
       maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className="max-w-[100%] md:w-[900px] flex flex-col">
-        <h1 className="mt-20 text-[30px] self-center text-center">Создай Свою Историю</h1>
+        <h1 className="mt-20 text-[30px] self-center text-center text-black">Создай Свою Историю</h1>
         <p>Помимо украшений нашего бренда, мы также готовы выполнить индивидуальный заказ. Наша команда поможет воплотить вашу идею в реальность, создав украшение, которое в точности отразит ваш стиль и индивидуальность. </p>
         <p>Создание уникального украшения — это весьма кропотливый процесс, состоящий из нескольких этапов. </p>
-        <h4 className="mt-5">Визуализация мечты</h4>
+        <h4 className="mt-5 text-black">Визуализация мечты</h4>
         <p>Разработка эскиза и  3D-модели будущего украшения, для точного понимания как оно будет выглядеть в жизни.</p>
-        <h4 className="mt-5">Восковая основа</h4>
+        <h4 className="mt-5 text-black">Восковая основа</h4>
         <p>Далее происходит создание восковой модели, которая в последствии станет основой для отливки украшения.</p>
-        <h4 className="mt-5">Превращение в металл</h4>
+        <h4 className="mt-5 text-black">Превращение в металл</h4>
         <p>После восковая модель отливается в металле, учитывая ваш выбор материала.</p>
-        <h4 className="mt-5">Штрихи совершенства</h4>
+        <h4 className="mt-5 text-black">Штрихи совершенства</h4>
         <p>Когда ваше будущее украшение отлилось, мы приступаем к самому трудоемкому процессу – обработка.  На финальном этапе мастер придает украшению окончательный вид, дополняя его всем необходимым для конечного результата.</p>
         <p>Каждый этап – это кропотливая работа нашей команды, вложенная в создание уникального шедевра.</p>
         <p>Хотите узнать больше о процессе создания украшений? </p>
         <p>Свяжитесь с нами! Мы с радостью расскажем вам обо всех этапах и поможем воплотить ваши самые смелые идеи в реальность.</p>
-        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center"
+        <button className="text-black border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center"
         style={{transition: ".4s ease"}}
         >Заказать</button>
         <div className="flex h-[300px] overflow-x-scroll my-10 custom-scrollbar">

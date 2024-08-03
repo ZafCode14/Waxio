@@ -83,17 +83,17 @@ const ItemPage = ({ params }: Props) => {
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className='w-[800px] max-w-full flex flex-col'>
-        <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
+        <p className="mt-20 self-start text-color-balck">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
         <div className='w-[400px] h-[400px] max-w-full'>
           <Image src={`/images/items/${itemId}/photo1.png`} width={"2000"} height={"2000"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer" priority/>
         </div>
         <p>{data[itemId].title}</p>
         <p>{formatPrice(data[itemId].price)} руб</p>
-        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start"
+        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
         style={{transition: ".4s ease"}}
         >Заказать</button>
         <p>Описание</p>
-        <p className='font-normal' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
+        <p className='text-color-black' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
         </div>
     </main>
   );

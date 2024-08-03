@@ -21,7 +21,7 @@ export default function About() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center mx-3 font-bold text-[#494949] min-h-[80vh]" style={{
+    <main className="flex flex-col items-center justify-center mx-3 font-bold text-color-black min-h-[80vh]" style={{
       maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <h1 className="mt-20 mb-2 text-center text-[30px] text-black">О Нас</h1>
