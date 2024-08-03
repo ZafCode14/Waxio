@@ -182,13 +182,15 @@ function Jewelryyy() {
           return isTypeMatch && isCollectionMatch ? (
             <Link key={key} href={`/jewelry/${key}`}  
             // Using the key to dynamically create the URL
-              className="w-[200px] max-w-[47%] md:w-[240px] mb-10 flex-col items-center text-center">
-              <div className="h-[200px] md:h-[240px] flex flex-col items-center mb-3" style={{
+              className="w-[200px] max-w-[47%] md:w-[240px] mb-5 flex-col items-center text-center">
+              <div className="flex flex-col items-center mb-3 cursor-pointer" style={{
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} className="cursor-pointer" priority/>
+                <div className="w-[44vw] md:w-[260px] md:h-[260px] h-[44vw] overflow-hidden flex justify-center items-center bg-gray-300 mb-2">
+                  <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
+                </div>
                 <p className="p-0 font-normal">{item.title}</p>
                 <p className="p-0">{formatPrice(item.price)} руб</p>
               </div>
