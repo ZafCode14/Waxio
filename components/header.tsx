@@ -58,12 +58,12 @@ function Header() {
             }}/>
           </div>
           <div className="overflow-hidden ml-4 flex flex-col" style={{height: !showType ? "0" : "190px", transition: ".5s ease"}}>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=ring")}>Кольца</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=pendant")}>Подвески</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=bracelet")}>Браслеты</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=earring")}>Серьги</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=accessory")}>Аксессуары</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=all&type=all")}>Все Украшения</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring")}>Кольца</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=pendant")}>Подвески</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=bracelet")}>Браслеты</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=earring")}>Серьги</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=accessory")}>Аксессуары</p>
+            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>Все Украшения</p>
           </div>
           <div className="flex flex-col cursor-pointer justify-center mt-4" onClick={handleCollection}>
             <p className="text-[20px]">Коллекции</p>
@@ -72,11 +72,11 @@ function Header() {
             }}/>
           </div>
           <div className="overflow-hidden ml-4" style={{height: !showCollection ? "0" : "195px", transition: ".5s ease"}}>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=waxio-britva&type=all")}>WAXIO / BRITVA</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=skeleton&type=all")}>SKELETON</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=geometric&type=all")}>GEOMETRIC</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=pohui&type=all")}>POHUI</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=fracture&type=all")}>FRACTURE</p>
+            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>WAXIO / BRITVA</p>
+            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>SKELETON</p>
+            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>GEOMETRIC</p>
+            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>POHUI</p>
+            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>FRACTURE</p>
           </div>
           <p className="cursor-pointer text-[20px] mt-4">На заказ</p>
           <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/about")}>О нас</p>

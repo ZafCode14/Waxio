@@ -39,35 +39,35 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full flex flex-col md:flex-row flex-wrap md:justify-between">
-        <Link href={"/jewelry?collection=waxio-britva&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+        <Link href={"/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
           backgroundImage: "url('/images/photo_0x03.jpg')",
           backgroundPosition: "center",
           transition: ".4s ease", 
         }}>
           <p className="text-[white] text-[20px]">WAXIO / BRITVA</p>
         </Link>
-        <Link href={"/jewelry?collection=skeleton&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+        <Link href={"/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
           backgroundImage: "url('/images/photo_0x04.png')",
           backgroundPosition: "center",
           transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">SKELETON</p>
         </Link>
-        <Link href={"/jewelry?collection=geometric&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] bg-[length:100%] hover:bg-[length:120%]" style={{
+        <Link href={"/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] bg-[length:100%] hover:bg-[length:120%]" style={{
           backgroundImage: "url('/images/photo_0x05.png')",
           backgroundPosition: "center",
           transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">GEOMETRIC</p>
         </Link>
-        <Link href={"/jewelry?collection=pohui&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+        <Link href={"/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:120%] hover:bg-[length:140%]" style={{
           backgroundImage: "url('/images/photo_0x06.png')",
           backgroundPosition: "center",
           transition: ".4s ease"
         }}>
           <p className="text-[white] text-[20px]">POHUI</p>
         </Link>
-        <Link href={"/jewelry?collection=fracture&type=all"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%]" style={{
+        <Link href={"/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:120%] hover:bg-[length:140%]" style={{
           backgroundImage: "url('/images/photo_0x07.png')",
           backgroundPosition: "center",
           transition: ".4s ease",

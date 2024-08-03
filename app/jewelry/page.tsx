@@ -9,15 +9,14 @@ import { Suspense } from "react";
 function Jewelryyy() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedCollection, setSelectedCollection] = useState(searchParams.get('collection') || 'all')
-  const [selectedType, setSelectedType] = useState(searchParams.get('type') || 'all')
-  const [showSort, setShowSort] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState<string[]>(searchParams.get('collection')?.split(',') || [])
+  const [selectedType, setSelectedType] = useState<string[]>(searchParams.get('type')?.split(",") || [])
   const [showFilter, setShowFilter] = useState(false);
   const [sort, setSort] = useState(false);
   const [width, setWidth] = useState(0);
 
-  const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other", "all"];
-  const types = ["ring", "pendant", "bracelet", "earring", "accessory", "all"];
+  const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other"];
+  const types = ["ring", "pendant", "bracelet", "earring", "accessory"];
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,16 +36,16 @@ function Jewelryyy() {
 
   useEffect(() => {
     const params = new URLSearchParams();
-    params.set('collection', selectedCollection);
-    params.set('type', selectedType);
+    params.set('collection', selectedCollection.join(','));
+    params.set('type', selectedType.join(','));
     router.replace(`/jewelry?${params.toString()}`)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCollection, selectedType, router])
 
   // New effect to update state when URL params change
   useEffect(() => {
-    const collection = searchParams.get('collection') || 'all';
-    const type = searchParams.get('type') || 'all';
+    const collection = searchParams.get('collection')?.split(',') || [];
+    const type = searchParams.get('type')?.split(',') || [];
     setSelectedCollection(collection);
     setSelectedType(type);
   }, [searchParams]);
@@ -94,26 +93,14 @@ function Jewelryyy() {
   const sortedDataDesc = Object.entries(data)
   .filter(([key, item]) => {
     // Check if type or collection is 'all' or matches the item
-    const isTypeMatch = selectedType === 'all' || item.type === selectedType;
-    const isCollectionMatch = selectedCollection === 'all' || item.collection === selectedCollection;
+    const isTypeMatch = selectedType.includes(item.type);
+    const isCollectionMatch = selectedCollection.includes(item.collection);
     return isTypeMatch && isCollectionMatch;
   })
   .sort((a, b) => a[1].price - b[1].price);  // Sort by price
 
-  const sortedDataAsc = Object.entries(data)
-  .filter(([key, item]) => {
-    // Check if type or collection is 'all' or matches the item
-    const isTypeMatch = selectedType === 'all' || item.type === selectedType;
-    const isCollectionMatch = selectedCollection === 'all' || item.collection === selectedCollection;
-    return isTypeMatch && isCollectionMatch;
-  })
-  .sort((a, b) => b[1].price - a[1].price);  // Sort by price
 
-  const sortedData = !sort ? sortedDataDesc : sortedDataAsc;
-
-  const handleSort = () => {
-    setShowSort(!showSort);
-  }
+  const sortedData = sortedDataDesc;
 
   const handleFilter = () => {
     setShowFilter(!showFilter);
@@ -123,7 +110,7 @@ function Jewelryyy() {
     <main className="flex min-h-screen flex-col px-3 items-center" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
-      <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection)} &gt; {turnTypeToname(selectedType)}</p>
+      <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection[0])} &gt; {turnTypeToname(selectedType[0])}</p>
       <div className="flex w-full justify-end items-start mb-10">
         <div className="flex flex-col">
           <div className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
@@ -143,8 +130,14 @@ function Jewelryyy() {
                   <input
                     type="checkbox"
                     id={`type-${type}`}
-                    checked={selectedType === type}
-                    onChange={() => setSelectedType(type)}
+                    checked={selectedType.includes(type)}
+                    onChange={() => {
+                      const isSelected = selectedType.includes(type);
+                      const updatedType = isSelected
+                        ? selectedType.filter(col => col !== type)
+                        : [...selectedType, type];
+                      setSelectedType(updatedType);
+                    }}
                   />
                   <label htmlFor={`type-${type}`} className="ml-1 text-[12px]">{turnTypeToname(type)}</label>
                 </div>
@@ -157,8 +150,14 @@ function Jewelryyy() {
                   <input
                     type="checkbox"
                     id={`collection-${collection}`}
-                    checked={selectedCollection === collection}
-                    onChange={() => setSelectedCollection(collection)}
+                    checked={selectedCollection.includes(collection)}
+                    onChange={() => {
+                      const isSelected = selectedCollection.includes(collection);
+                      const updatedSelection = isSelected
+                        ? selectedCollection.filter(col => col !== collection)
+                        : [...selectedCollection, collection];
+                      setSelectedCollection(updatedSelection);
+                    }}
                   />
                   <label htmlFor={`collection-${collection}`} className="ml-1 text-[12px]">{turnCollectionToName(collection)}</label>
                 </div>
@@ -172,8 +171,8 @@ function Jewelryyy() {
       <div className="flex flex-wrap w-[900px] max-w-[100%] justify-around">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
-          const isTypeMatch = selectedType === 'all' || item.type === selectedType;
-          const isCollectionMatch = selectedCollection === 'all' || item.collection === selectedCollection;
+          const isTypeMatch = selectedType.includes(item.type);
+          const isCollectionMatch = selectedCollection.includes(item.collection);
 
           const formatPrice = (price: number) => {
             return new Intl.NumberFormat('ru-RU').format(price);
@@ -181,21 +180,19 @@ function Jewelryyy() {
 
           // Render item if it matches the type and collection conditions
           return isTypeMatch && isCollectionMatch ? (
-            <div key={key} className="w-[200px] max-w-[47%] md:w-[240px] mb-10 flex-col items-center text-center">
-              <Link
-                href={`/jewelry/${key}`}  // Using the key to dynamically create the URL
-                className="h-[200px] md:h-[240px] flex justify-center items-center mb-3"
-                style={{
-                  backgroundColor: "gray",  // Example: use the first photo URL for background
+            <Link key={key} href={`/jewelry/${key}`}  
+            // Using the key to dynamically create the URL
+              className="w-[200px] max-w-[47%] md:w-[240px] mb-10 flex-col items-center text-center">
+              <div className="h-[200px] md:h-[240px] flex flex-col items-center mb-3" style={{
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} className="h-full w-full cursor-pointer" priority/>
-              </Link>
-              <p className="p-0 font-normal">{item.title}</p>
-              <p className="p-0">{formatPrice(item.price)} руб</p>
-            </div>
+                <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} className="cursor-pointer" priority/>
+                <p className="p-0 font-normal">{item.title}</p>
+                <p className="p-0">{formatPrice(item.price)} руб</p>
+              </div>
+            </Link>
           ) : null;
         })}
       </div>
