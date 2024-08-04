@@ -44,8 +44,16 @@ function Jewelryyy() {
 
   // New effect to update state when URL params change
   useEffect(() => {
-    const collection = searchParams.get('collection')?.split(',') || [];
-    const type = searchParams.get('type')?.split(',') || [];
+    const collection = searchParams
+      .get('collection')
+      ?.split(',')
+      .filter(col => col.trim() !== '') || [];
+    
+    const type = searchParams
+      .get('type')
+      ?.split(',')
+      .filter(typ => typ.trim() !== '') || [];
+    
     setSelectedCollection(collection);
     setSelectedType(type);
   }, [searchParams]);
@@ -105,6 +113,8 @@ function Jewelryyy() {
   const handleFilter = () => {
     setShowFilter(!showFilter);
   }
+
+  console.log(selectedCollection);
 
   return (
     <main className="flex min-h-screen flex-col px-3 items-center" style={{

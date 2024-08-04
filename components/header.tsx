@@ -41,8 +41,8 @@ function Header() {
   }
 
   return (
-    <header className="w-full h-[70px] text-black fixed top-0 px-3 z-50 bg-color-white">
-      <div className="absolute bg-color-white w-[300px] h-screen border-l border-l-black flex flex-col items-end" style={{
+    <header className="w-full h-[70px] text-black fixed top-0 px-3 z-50 bg-color-yellow">
+      <div className="absolute bg-color-yellow w-[300px] h-screen border-l border-l-black flex flex-col items-end" style={{
         right: showNav ? "0" : `${width >= 1024 ? "0" : "-300px"}`, 
         transition: ".4s ease",
         zIndex: "1000"

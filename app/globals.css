@@ -24,10 +24,13 @@ h1 {
   font-weight: bold;
 }
 .bg-color-white {
-  background-color: rgb(233, 233, 233);
+  background-color: #FCFCFC;
 }
 .bg-color-black {
   background-color: rgb(17, 17, 17);
+}
+.bg-color-yellow {
+  background-color: #FFF931;
 }
 .text-color-black {
   color: rgb(49, 49, 49);

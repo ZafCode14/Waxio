@@ -28,7 +28,7 @@ function Footer() {
                     <p className="text-[20px] cursor-pointer">О бренде</p>
                 </Link>
             </div>
-            <div className="bg-color-black h-[80px] w-full flex justify-between items-center overflow-hidden">
+            <div className="bg-[#3D3D3D] h-[80px] w-full flex justify-between items-center overflow-hidden">
                 <Link href={"/"}>
                   <Image src={"/icons/logo.svg"} width={"100"} height={"100"} alt="exit" className="h-[60px] w-[60px] m-4 cursor-pointer"/>
                 </Link>
