@@ -27,7 +27,7 @@ export default function Home() {
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <section className="w-full h-[600px] bg-color-white mb-3 relative overflow-hidden flex justify-center items-center">
-        <Image src={`/images/photo_0x0${width < 700 ? "1" : "2"}.png`} width={"2000"} height={"2000"} alt="waxio" className="absolute" priority/>
+        <Image src={`/images/photo_0x0${width < 700 ? "1" : "2"}.png`} width={"2000"} height={"2000"} alt="waxio" className="absolute h-full object-cover" priority/>
         <div className="flex flex-col justify-end items-center p-3 h-full relative">
           <h1 className="text-[22px] text-center px-3 font-bold">Ваши идеи - наши заботы</h1>
           <Link className="w-full flex justify-center" href={'/custom'}>
@@ -36,25 +36,25 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full flex flex-col md:flex-row flex-wrap md:justify-between">
-        <Link href={"/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="overflow-hidden h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%] relative" style={{
+        <Link href={"/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="overflow-hidden h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] relative" style={{
         }}>
-          <Image src={"/images/photo_0x03.jpg"} width={"800"} height={"800"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x03.jpg"} width={"2000"} height={"2000"} alt="waxio" className="cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">WAXIO / BRITVA</p>
         </Link>
-        <Link href={"/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:100%] hover:bg-[length:120%] overflow-hidden relative">
-          <Image src={"/images/photo_0x04.png"} width={"800"} height={"800"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+        <Link href={"/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
+          <Image src={"/images/photo_0x04.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">SKELETON</p>
         </Link>
-        <Link href={"/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] bg-[length:100%] hover:bg-[length:120%] overflow-hidden relative">
+        <Link href={"/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] overflow-hidden relative">
           <Image src={"/images/photo_0x05.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">GEOMETRIC</p>
         </Link>
-        <Link href={"/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:120%] hover:bg-[length:140%] overflow-hidden relative">
-          <Image src={"/images/photo_0x06.png"} width={"800"} height={"800"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+        <Link href={"/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
+          <Image src={"/images/photo_0x06.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">POHUI</p>
         </Link>
-        <Link href={"/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] bg-[length:120%] hover:bg-[length:140%] overflow-hidden relative">
-          <Image src={"/images/photo_0x07.png"} width={"800"} height={"800"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+        <Link href={"/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
+          <Image src={"/images/photo_0x07.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">FRACTURE</p>
         </Link>
       </section>

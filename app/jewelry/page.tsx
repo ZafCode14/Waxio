@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import data from "@/data/items";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Suspense } from "react";
 
 function Jewelryyy() {
@@ -17,6 +17,8 @@ function Jewelryyy() {
 
   const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other"];
   const types = ["ring", "pendant", "bracelet", "earring", "accessory"];
+
+  const filterRef = useRef<HTMLDivElement>(null); // Reference to the filter div
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,6 +59,21 @@ function Jewelryyy() {
     setSelectedCollection(collection);
     setSelectedType(type);
   }, [searchParams]);
+
+  // remove filter if clicked outside the div
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+        setShowFilter(false); // Hide filter if clicked outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const turnCollectionToName = (collection: string) => {
     let collectionName;
@@ -120,7 +137,11 @@ function Jewelryyy() {
     <main className="flex min-h-screen flex-col px-3 items-center" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
-      <p className="mt-20 self-start">Украшения &gt; {turnCollectionToName(selectedCollection[0])} &gt; {turnTypeToname(selectedType[0])}</p>
+      <p className="mt-20 self-start">Украшения &gt; {
+        selectedCollection.length > 1 ? `${selectedCollection.length === 6 ? "Все Коллекции" : `${turnCollectionToName(selectedCollection[0])}, ...`}` : turnCollectionToName(selectedCollection[0])
+      } &gt; {
+        selectedType.length > 1 ? `${selectedType.length === 5 ? "Все Украшения" : `${turnTypeToname(selectedType[0])}, ...`}` : turnTypeToname(selectedType[0])
+      }</p>
       <div className="flex w-full justify-end items-start mb-10">
         <div className="flex flex-col">
           <div className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
@@ -129,7 +150,7 @@ function Jewelryyy() {
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div className={`flex overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
+          <div ref={filterRef} className={`flex overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
             transition: ".4s ease",
             height: !showFilter ? "0px" : "200px"
             }}>
