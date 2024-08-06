@@ -25,7 +25,7 @@ export default function Custom() {
       maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className="max-w-[100%] md:w-[900px] flex flex-col">
-        <h1 className="mt-20 text-[30px] self-center text-center text-black">Создай Свою Историю</h1>
+        <h1 className="mt-20 mb-4 text-[30px] self-center text-center text-black">Создай Свою Историю</h1>
         <p>Помимо украшений нашего бренда, мы также готовы выполнить индивидуальный заказ. Наша команда поможет воплотить вашу идею в реальность, создав украшение, которое в точности отразит ваш стиль и индивидуальность. </p>
         <p>Создание уникального украшения — это весьма кропотливый процесс, состоящий из нескольких этапов. </p>
         <h4 className="mt-5 text-black">Визуализация мечты</h4>

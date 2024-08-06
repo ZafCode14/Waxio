@@ -12,13 +12,13 @@ function Jewelryyy() {
   const [selectedCollection, setSelectedCollection] = useState<string[]>(searchParams.get('collection')?.split(',') || [])
   const [selectedType, setSelectedType] = useState<string[]>(searchParams.get('type')?.split(",") || [])
   const [showFilter, setShowFilter] = useState(false);
-  const [sort, setSort] = useState(false);
   const [width, setWidth] = useState(0);
 
   const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other"];
   const types = ["ring", "pendant", "bracelet", "earring", "accessory"];
 
   const filterRef = useRef<HTMLDivElement>(null); // Reference to the filter div
+  const filterBtn = useRef<HTMLDivElement>(null); // Reference to the filter div
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,7 +63,7 @@ function Jewelryyy() {
   // remove filter if clicked outside the div
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+      if (filterRef.current && !filterBtn.current?.contains(event.target as Node) && !filterRef.current.contains(event.target as Node)) {
         setShowFilter(false); // Hide filter if clicked outside
       }
     };
@@ -73,6 +73,7 @@ function Jewelryyy() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const turnCollectionToName = (collection: string) => {
@@ -144,24 +145,26 @@ function Jewelryyy() {
       }</p>
       <div className="flex w-full justify-end items-start mb-10">
         <div className="flex flex-col">
-          <div className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
+          <div ref={filterBtn} className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
             <p>Фильтр</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div ref={filterRef} className={`flex overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 bg-[#d6d6d6] px-3 rounded-md`} style={{
+          <div ref={filterRef} className={`flex flex-col overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 px-3 bg-color-white`} style={{
             transition: ".4s ease",
-            height: !showFilter ? "0px" : "200px"
+            height: !showFilter ? "0px" : "310px",
+            border: !showFilter ? "none" : "1px solid black"
             }}>
             <div className="mr-6 flex-col">
-              <p>Украшения</p>
+              <p className="pb-0">Украшения</p>
               {types.map(type => (
-                <div key={type} className="flex items-center my-1">
+                <div key={type} className="flex items-center my-1 cursor-pointer">
                   <input
                     type="checkbox"
                     id={`type-${type}`}
                     checked={selectedType.includes(type)}
+                    className="custom-checkbox"
                     onChange={() => {
                       const isSelected = selectedType.includes(type);
                       const updatedType = isSelected
@@ -170,18 +173,19 @@ function Jewelryyy() {
                       setSelectedType(updatedType);
                     }}
                   />
-                  <label htmlFor={`type-${type}`} className="ml-1 text-[12px]">{turnTypeToname(type)}</label>
+                  <label htmlFor={`type-${type}`} className="ml-1 text-[12px] cursor-pointer">{turnTypeToname(type)}</label>
                 </div>
               ))}
             </div>
             <div>
-              <p>Коллекции</p>
+              <p className="pb-0">Коллекции</p>
               {collections.map(collection => (
-                <div key={collection} className="flex items-center my-1">
+                <div key={collection} className="flex items-center my-1 cursor-pointer">
                   <input
                     type="checkbox"
                     id={`collection-${collection}`}
                     checked={selectedCollection.includes(collection)}
+                    className="custom-checkbox"
                     onChange={() => {
                       const isSelected = selectedCollection.includes(collection);
                       const updatedSelection = isSelected
@@ -190,7 +194,7 @@ function Jewelryyy() {
                       setSelectedCollection(updatedSelection);
                     }}
                   />
-                  <label htmlFor={`collection-${collection}`} className="ml-1 text-[12px]">{turnCollectionToName(collection)}</label>
+                  <label htmlFor={`collection-${collection}`} className="ml-1 text-[12px] cursor-pointer">{turnCollectionToName(collection)}</label>
                 </div>
               ))}
               <div>
