@@ -25,7 +25,7 @@ function Footer() {
     }}>
             <div className="flex flex-col items-center border-t border-black w-[95%] py-10">
                 <Link href={'/about'}>
-                    <p className="text-[20px] cursor-pointer font-normal">О бренде</p>
+                    <p className="text-[18px] cursor-pointer font-normal">О бренде</p>
                 </Link>
             </div>
             <div className="bg-[#3D3D3D] h-[60px] w-full flex justify-between items-center overflow-hidden">
