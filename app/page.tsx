@@ -38,23 +38,23 @@ export default function Home() {
       <section className="w-full flex flex-col md:flex-row flex-wrap md:justify-between">
         <Link href={"/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="overflow-hidden h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] relative" style={{
         }}>
-          <Image src={"/images/photo_0x03.jpg"} width={"2000"} height={"2000"} alt="waxio" className="cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x03.jpg"} width={"2000"} height={"2000"} alt="waxio" className="cursor-pointer absolute h-full object-cover" priority/>
           <p className="text-[white] text-[20px] relative">WAXIO / BRITVA</p>
         </Link>
         <Link href={"/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
-          <Image src={"/images/photo_0x04.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x04.png"} width={"2000"} height={"2000"} alt="waxio" className="cursor-pointer absolute h-full object-cover" priority/>
           <p className="text-[white] text-[20px] relative">SKELETON</p>
         </Link>
         <Link href={"/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[100%] overflow-hidden relative">
-          <Image src={"/images/photo_0x05.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x05.png"} width={"2000"} height={"2000"} alt="waxio" className="h-full object-cover cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">GEOMETRIC</p>
         </Link>
         <Link href={"/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
-          <Image src={"/images/photo_0x06.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x06.png"} width={"2000"} height={"2000"} alt="waxio" className="h-full object-cover cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">POHUI</p>
         </Link>
         <Link href={"/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory"} className="h-[210px] md:h-[300px] w-full flex justify-center items-center mb-3 md:w-[49.5%] overflow-hidden relative">
-          <Image src={"/images/photo_0x07.png"} width={"2000"} height={"2000"} alt="waxio" className="w-full cursor-pointer absolute" priority/>
+          <Image src={"/images/photo_0x07.png"} width={"2000"} height={"2000"} alt="waxio" className="h-full object-cover cursor-pointer absolute" priority/>
           <p className="text-[white] text-[20px] relative">FRACTURE</p>
         </Link>
       </section>
