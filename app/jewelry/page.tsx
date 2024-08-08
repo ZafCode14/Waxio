@@ -132,8 +132,6 @@ function Jewelryyy() {
     setShowFilter(!showFilter);
   }
 
-  console.log(selectedCollection);
-
   return (
     <main className="flex min-h-screen flex-col px-3 items-center" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"

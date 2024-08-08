@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 function Header() {
@@ -10,6 +10,8 @@ function Header() {
   const [showNav, setShowNav] = useState(false);
   const [showType, setShowType] = useState(false);
   const [showCollection, setShowCollection] = useState(false);
+
+  const menuRef = useRef<HTMLDivElement>(null); // Reference to the filter div
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +23,21 @@ function Header() {
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current?.contains(event.target as Node)) {
+        setShowNav(false); // Hide Nav if clicked outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -42,7 +59,7 @@ function Header() {
 
   return (
     <header className="w-full h-[70px] text-black fixed top-0 px-3 z-50 bg-color-yellow">
-      <div className="absolute bg-color-yellow w-[300px] h-screen flex flex-col items-end" style={{
+      <div ref={menuRef} className="absolute bg-color-yellow w-[300px] h-screen flex flex-col items-end" style={{
         right: showNav ? "0" : `${width >= 1024 ? "0" : "-300px"}`, 
         transition: ".4s ease",
         zIndex: "1000"
