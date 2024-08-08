@@ -22,7 +22,7 @@ export default function About() {
 
   return (
     <main className="flex flex-col items-center mx-3 font-bold text-color-black" style={{
-      minHeight: "calc(100vh - 176px)",
+      minHeight: "calc(100vh - 60px)",
       maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className="flex flex-col md:w-[500px]">

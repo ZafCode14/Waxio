@@ -84,7 +84,7 @@ const ItemPage = ({ params }: Props) => {
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className='w-[800px] max-w-full flex flex-col'>
-        <p className="mt-20 self-start text-color-balck">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
+        <p className="mt-20 mb-2 self-start text-color-balck">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
         <div className='w-[400px] h-[400px] max-w-full'>
           <Image src={`/images/items/${itemId}/photo${activePhoto}.png`} width={"1929"} height={"1080"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer object-cover" priority/>
         </div>
@@ -95,13 +95,13 @@ const ItemPage = ({ params }: Props) => {
             }}/>
           ))}
         </div>
-        <p>{data[itemId].title}</p>
-        <p>{formatPrice(data[itemId].price)} руб</p>
+        <p className='mt-4'>{data[itemId].title}</p>
+        <p className='font-normal'>{formatPrice(data[itemId].price)} руб</p>
         <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
         style={{transition: ".4s ease"}}
         >Заказать</button>
-        <p>Описание</p>
-        <p className='text-color-black' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
+        <p className='mt-2'>Описание</p>
+        <p className='text-color-black font-normal' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
         </div>
     </main>
   );

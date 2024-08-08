@@ -143,7 +143,7 @@ function Jewelryyy() {
       } &gt; {
         selectedType.length > 1 ? `${selectedType.length === 5 ? "Все Украшения" : `${turnTypeToname(selectedType[0])}, ...`}` : turnTypeToname(selectedType[0])
       }</p>
-      <div className="flex w-full justify-end items-start mb-10">
+      <div className="flex w-full justify-end items-start mb-4">
         <div className="flex flex-col">
           <div ref={filterBtn} className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
             <p>Фильтр</p>
@@ -226,8 +226,8 @@ function Jewelryyy() {
                 <div className="max-h-[45vw] h-[250px] overflow-hidden flex justify-center items-center mb-2">
                   <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
                 </div>
-                <p className="p-0 font-normal">{item.title}</p>
-                <p className="p-0">{formatPrice(item.price)} руб</p>
+                <p className="p-0 font-normal text-[12px]">{item.title}</p>
+                <p className="p-0 font-normal text-[14px] text-color-balck">{formatPrice(item.price)} руб</p>
               </div>
             </Link>
           ) : null;
