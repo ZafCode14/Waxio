@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import data from "@/data/items";
 import { useEffect, useState, useRef } from "react";
 import { Suspense } from "react";
+import SwipeableGallery from "@/components/swipe";
 
 function Jewelryyy() {
   const router = useRouter();
@@ -202,10 +203,12 @@ function Jewelryyy() {
         </div>
       </div>
       <div className="flex flex-wrap w-[900px] max-w-[100%] justify-around">
-        {sortedData.map(([key, item]) => {
+        {sortedData.map(([key, item]: [any, any]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType.includes(item.type);
           const isCollectionMatch = selectedCollection.includes(item.collection);
+          const images = data[key].photo.map((photo: string) => (`/images/items/${key}/${photo}.png`));
+          console.log(images);
 
           const formatPrice = (price: number) => {
             return new Intl.NumberFormat('ru-RU').format(price);
@@ -221,9 +224,7 @@ function Jewelryyy() {
                   backgroundPosition: "center",
                 }}
               >
-                <div className="max-h-[45vw] h-[250px] overflow-hidden flex justify-center items-center mb-2">
-                  <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
-                </div>
+                <SwipeableGallery images={images}/>
                 <p className="p-0 font-normal text-[12px]">{item.title}</p>
                 <p className="p-0 font-normal text-[14px] text-color-balck">{formatPrice(item.price)} руб</p>
               </div>
