@@ -90,7 +90,7 @@ const ItemPage = ({ params }: Props) => {
         </div>
         <div className='flex overflow-hidden mt-2'>
           {data[itemId].photo.map((photo, index) => (
-            <Image key={photo} src={`/images/items/${itemId}/${photo}.png`} width={"400"} height={"100"} alt={`photo${itemId}`} className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" priority onClick={() => setActivePhoto(index + 1)} style={{
+            <Image key={photo} src={`/images/items/${itemId}/${photo}.png`} width={"80"} height={"10"} alt={`photo${itemId}`} className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" priority onClick={() => setActivePhoto(index + 1)} style={{
               border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
             }}/>
           ))}
