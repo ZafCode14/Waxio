@@ -12,6 +12,7 @@ interface Props {
 
 const ItemPage = ({ params }: Props) => {
   const [activePhoto, setActivePhoto] = useState(1);
+  const [loading, setLoading] = useState(false);
   const [width, setWidth] = useState(0);
   const { itemId } = params;
 
@@ -79,18 +80,54 @@ const ItemPage = ({ params }: Props) => {
     return new Intl.NumberFormat('ru-RU').format(price);
   };
 
+  const handleImageClick = (index: number) => {
+    if (index + 1 !== activePhoto) {
+      setLoading(true);
+    }
+    setActivePhoto(index + 1);
+  };
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
+
   return (
     <main className="flex flex-col items-center min-h-screen px-3 max-w-screen" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className='w-[800px] max-w-full flex flex-col'>
         <p className="mt-20 mb-2 self-start text-color-balck">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
-        <div className='w-[400px] h-[400px] max-w-full'>
-          <Image src={`/images/items/${itemId}/photo${activePhoto}.png`} width={"1929"} height={"1080"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer object-cover" priority/>
+        <div className='w-[400px] h-[400px] max-w-full relative'>
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
+              <div className="loading-spinner"></div>
+              <style jsx>{`
+                .loading-spinner {
+                  border: 8px solid rgba(0, 0, 0, 0.1);
+                  border-top: 8px solid #000;
+                  border-radius: 50%;
+                  width: 50px;
+                  height: 50px;
+                  animation: spin 1s linear infinite;
+                }
+
+                @keyframes spin {
+                  0% {
+                    transform: rotate(0deg);
+                  }
+                  100% {
+                    transform: rotate(360deg);
+                  }
+                }
+              `}</style>
+            </div>
+          )}
+          <Image src={`/images/items/${itemId}/photo${activePhoto}.png`} width={"1929"} height={"1080"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer object-cover" priority onLoad={handleImageLoad}/>
         </div>
         <div className='flex overflow-hidden mt-2'>
           {data[itemId].photo.map((photo, index) => (
-            <Image key={photo} src={`/images/items/${itemId}/${photo}.png`} width={"80"} height={"10"} alt={`photo${itemId}`} className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" priority onClick={() => setActivePhoto(index + 1)} style={{
+            <Image key={photo} src={`/images/items/${itemId}/${photo}.png`} width={"80"} height={"10"} alt={`photo${itemId}`} className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" priority onClick={() => handleImageClick(index)} style={{
               border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
             }}/>
           ))}
@@ -104,6 +141,7 @@ const ItemPage = ({ params }: Props) => {
         <p className='text-color-black font-normal' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
         </div>
     </main>
+
   );
 };
 
