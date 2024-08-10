@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import data from '@/data/items';
 
 interface Props {
@@ -12,7 +13,6 @@ interface Props {
 
 const ItemPage = ({ params }: Props) => {
   const [activePhoto, setActivePhoto] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [width, setWidth] = useState(0);
   const { itemId } = params;
 
@@ -50,30 +50,11 @@ const ItemPage = ({ params }: Props) => {
     } else if (collection === "fracture") {
       collectionName = "FRACTURE";
     } else if (collection === "other") {
-      collectionName = "Другое"
+      collectionName = "Другое";
     } else if (collection === "all") {
-      collectionName = "Все Коллекции"
+      collectionName = "Все Коллекции";
     }
     return collectionName;
-  }
-
-  const turnTypeToname = (type: string) => {
-    let typeName;
-
-    if (type === "ring") {
-      typeName = "Кольца";
-    } else if (type === "pendant") {
-      typeName = "Подвески";
-    } else if (type === "bracelet") {
-      typeName = "Браслеты";
-    } else if (type === "earring") {
-      typeName = "Серьги";
-    } else if (type === "accessory") {
-      typeName = "Аксессуары"
-    } else if (type === "all") {
-      typeName = "Все"
-    }
-    return typeName;
   }
 
   const formatPrice = (price: number) => {
@@ -81,67 +62,80 @@ const ItemPage = ({ params }: Props) => {
   };
 
   const handleImageClick = (index: number) => {
-    if (index + 1 !== activePhoto) {
-      setLoading(true);
-    }
     setActivePhoto(index + 1);
   };
 
-  const handleImageLoad = () => {
-    setLoading(false);
+  const handleSwipe = (direction: 'left' | 'right') => {
+    if (direction === 'left') {
+      setActivePhoto((prev) => (prev + 1 > data[itemId].photo.length ? 1 : prev + 1));
+    } else if (direction === 'right') {
+      setActivePhoto((prev) => (prev - 1 < 1 ? data[itemId].photo.length : prev - 1));
+    }
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleSwipe('left'),
+    onSwipedRight: () => handleSwipe('right'),
+    trackMouse: true,
+  });
 
   return (
     <main className="flex flex-col items-center min-h-screen px-3 max-w-screen" style={{
       width: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className='w-[800px] max-w-full flex flex-col'>
-        <p className="mt-20 mb-2 self-start text-color-balck">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
-        <div className='w-[400px] h-[400px] max-w-full relative'>
-          {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
-              <div className="loading-spinner"></div>
-              <style jsx>{`
-                .loading-spinner {
-                  border: 8px solid rgba(0, 0, 0, 0.1);
-                  border-top: 8px solid #000;
-                  border-radius: 50%;
-                  width: 50px;
-                  height: 50px;
-                  animation: spin 1s linear infinite;
-                }
-
-                @keyframes spin {
-                  0% {
-                    transform: rotate(0deg);
-                  }
-                  100% {
-                    transform: rotate(360deg);
-                  }
-                }
-              `}</style>
-            </div>
-          )}
-          <Image src={`/images/items/${itemId}/photo${activePhoto}.png`} width={"1929"} height={"1080"} alt={`photo${itemId}`} className="h-full w-full cursor-pointer object-cover" priority onLoad={handleImageLoad}/>
+        <p className="mt-20 mb-2 self-start text-color-black">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
+        <div {...handlers} className='w-[400px] h-[400px] max-h-[92vw] max-w-full relative overflow-hidden'>
+          <div 
+            className='flex transition-transform ease-in-out duration-500'
+            style={{ transform: `translateX(-${(activePhoto - 1) * 100}%)` }}
+          >
+            {data[itemId].photo.map((photo, index) => (
+              <div key={index} className='w-full h-full flex-shrink-0'>
+                <Image 
+                  src={`/images/items/${itemId}/${photo}.png`} 
+                  width={1920} 
+                  height={1080} 
+                  alt={`photo${itemId}`} 
+                  className="h-full w-full object-cover" 
+                  priority 
+                />
+              </div>
+            ))}
+          </div>
         </div>
         <div className='flex overflow-hidden mt-2'>
           {data[itemId].photo.map((photo, index) => (
-            <Image key={photo} src={`/images/items/${itemId}/${photo}.png`} width={"80"} height={"10"} alt={`photo${itemId}`} className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" priority onClick={() => handleImageClick(index)} style={{
-              border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
-            }}/>
+            <Image 
+              key={photo} 
+              src={`/images/items/${itemId}/${photo}.png`} 
+              width={80} 
+              height={80} 
+              alt={`photo${itemId}`} 
+              className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" 
+              priority 
+              onClick={() => handleImageClick(index)} 
+              style={{
+                border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
+              }}
+            />
           ))}
         </div>
         <p className='mt-4'>{data[itemId].title}</p>
         <p className='font-normal'>{formatPrice(data[itemId].price)} руб</p>
-        <button className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
-        style={{transition: ".4s ease"}}
-        >Заказать</button>
-        <p className='mt-2'>Описание</p>
-        <p className='text-color-black font-normal' dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br />') }}></p>
-        </div>
+        <button 
+          className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
+          style={{ transition: ".4s ease" }}
+        >
+          Заказать
+        </button>
+        <p className='mt-2 pb-0'>Описание</p>
+        <p 
+          className='text-color-black text-[14px]' 
+          dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br/>') }}
+        ></p>
+      </div>
     </main>
-
   );
 };
 

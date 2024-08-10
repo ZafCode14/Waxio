@@ -26,7 +26,7 @@ export default function About() {
       maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className="flex flex-col md:w-[500px]">
-        <h1 className="mt-[95px] mb-2 text-center text-[24px] text-black self-start">О Нас</h1>
+        <h1 className="mt-[95px] mb-2 text-center text-[24px] text-black self-start">О НАС</h1>
         <p className="my-[5px]"><b className="text-[18px] text-black">WAXIO</b> - это движение, в основе которого лежит любовь к современности и стилю.</p>
         <p className="my-[5px]">Мы создаем украшения, которые не просто украшают, а отражают вашу индивидуальность и помогают вам выразить свою внутреннюю красоту.</p>
         <p className="my-[5px]">В наше время, в погоне за модой и трендами, мы зачастую теряем идентичность своего стиля. Каждый день тысячи людей задумываются над поиском себя.</p>
