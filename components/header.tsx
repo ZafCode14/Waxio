@@ -100,7 +100,7 @@ function Header() {
           </div>
           <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/custom")}>На заказ</p>
           <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/about")}>О нас</p>
-          <div className="flex absolute bottom-[70px] right-[20px] items-center w-[70%] justify-end">
+          <div className="flex absolute bottom-[100px] right-[20px] items-center w-[70%] justify-end">
             <Telegram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
             <Vk color="black" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
             <Instagram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
