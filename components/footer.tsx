@@ -2,6 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Telegram from "./telegram";
+import Vk from "./vk";
+import Instagram from "./instagram";
 
 function Footer() {
   const [width, setWidth] = useState(0);
@@ -28,8 +31,9 @@ function Footer() {
                 <Image src={"/icons/logo.svg"} width={"100"} height={"100"} alt="exit" className="h-[50px] w-[50px] m-4 cursor-pointer"/>
               </Link>
               <div className="flex">
-                  <Image src={"/icons/telegram.svg"} width={"100"} height={"100"} alt="exit" className="h-[30px] w-[30px] m-4 cursor-pointer"/>
-                  <Image src={"/icons/vk.svg"} width={"100"} height={"100"} alt="exit" className="h-[30px] w-[30px] m-4 cursor-pointer"/>
+                <Telegram color="white" className="h-[30px] w-[30px] cursor-pointer"/>
+                <Vk color="white" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
+                <Instagram color="white" className="h-[30px] w-[30px] mr-4 cursor-pointer"/>
               </div>
           </div>
         </footer>
