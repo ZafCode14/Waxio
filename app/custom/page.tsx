@@ -22,7 +22,7 @@ export default function Custom() {
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black" style={{
-      maxWidth: width >= 1024 ? "calc(100% - 300px)" : "100%"
+      maxWidth: width >= 640 ? "calc(100% - 325px)" : "100%"
     }}>
       <div className="max-w-[100%] md:w-[900px] flex flex-col">
         <h1 className="mt-[95px] mb-4 text-[24px] self-start text-center text-black">СОЗДАЙ СВОЮ ИСТОРИЮ</h1>

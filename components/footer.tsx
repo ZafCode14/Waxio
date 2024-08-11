@@ -21,7 +21,7 @@ function Footer() {
 
     return (
         <footer className="relative w-full bg-color-white flex flex-col justify-center items-center text-black mt-5" style={{
-      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
           <div className="bg-[#3D3D3D] h-[60px] w-full flex justify-between items-center overflow-hidden">
               <Link href={"/"}>

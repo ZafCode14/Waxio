@@ -134,7 +134,7 @@ function Jewelryyy() {
 
   return (
     <main className="flex min-h-screen flex-col px-3 items-center" style={{
-      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
       <p className="mt-20 self-start">Украшения &gt; {
         selectedCollection.length > 1 ? `${selectedCollection.length === 6 ? "Все Коллекции" : `${turnCollectionToName(selectedCollection[0])}, ...`}` : turnCollectionToName(selectedCollection[0])

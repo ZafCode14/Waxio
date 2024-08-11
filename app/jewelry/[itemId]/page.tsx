@@ -81,7 +81,7 @@ const ItemPage = ({ params }: Props) => {
 
   return (
     <main className="flex flex-col items-center min-h-screen px-3 max-w-screen" style={{
-      width: width >= 1024 ? "calc(100% - 300px)" : "100%"
+      width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
       <div className='w-[800px] max-w-full flex flex-col'>
         <p className="mt-20 mb-2 self-start text-color-black">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
