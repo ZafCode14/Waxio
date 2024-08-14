@@ -1,24 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import useWindowWidth from "@/hooks/width";
 
 export default function About() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.scrollTo(0, 0);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const width = useWindowWidth();
 
   return (
     <main className="flex flex-col items-center mx-3 font-bold text-color-black" style={{

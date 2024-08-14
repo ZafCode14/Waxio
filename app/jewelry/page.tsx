@@ -5,36 +5,21 @@ import { useSearchParams, useRouter } from "next/navigation";
 import data from "@/data/items";
 import { useEffect, useState, useRef } from "react";
 import { Suspense } from "react";
+import useWindowWidth from "@/hooks/width";
 
 function Jewelryyy() {
   const router = useRouter();
+  const width = useWindowWidth();
   const searchParams = useSearchParams();
   const [selectedCollection, setSelectedCollection] = useState<string[]>(searchParams.get('collection')?.split(',') || [])
   const [selectedType, setSelectedType] = useState<string[]>(searchParams.get('type')?.split(",") || [])
   const [showFilter, setShowFilter] = useState(false);
-  const [width, setWidth] = useState(0);
 
   const collections = ["skeleton", "geometric", "waxio-britva", "pohui", "fracture", "other"];
   const types = ["ring", "pendant", "bracelet", "earring", "accessory"];
 
   const filterRef = useRef<HTMLDivElement>(null); // Reference to the filter div
   const filterBtn = useRef<HTMLDivElement>(null); // Reference to the filter div
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.scrollTo(0, 0);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams();

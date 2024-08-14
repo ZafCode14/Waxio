@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import data from '@/data/items';
+import useWindowWidth from '@/hooks/width';
 
 interface Props {
   params: {
@@ -13,24 +14,8 @@ interface Props {
 
 const ItemPage = ({ params }: Props) => {
   const [activePhoto, setActivePhoto] = useState(1);
-  const [width, setWidth] = useState(0);
   const { itemId } = params;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.scrollTo(0, 0);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const width = useWindowWidth();
 
   if (itemId > 29 || isNaN(itemId)) {
     notFound();

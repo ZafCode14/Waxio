@@ -1,26 +1,10 @@
 "use client"
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import useWindowWidth from "@/hooks/width";
 
 export default function Home() {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.scrollTo(0, 0);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const width = useWindowWidth();
 
   return (
     <main className=" flex flex-col items-center justify-start px-3" style={{

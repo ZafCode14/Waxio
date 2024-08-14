@@ -1,25 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import useWindowWidth from "@/hooks/width";
 
 export default function Custom() {
-  const [width, setWidth] = useState(0);
+  const width = useWindowWidth();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-
-    window.scrollTo(0, 0);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black" style={{
       maxWidth: width >= 640 ? "calc(100% - 325px)" : "100%"
