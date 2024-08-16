@@ -1,10 +1,16 @@
 "use client";
 import Image from "next/image";
 import useWindowWidth from "@/hooks/width";
+import Popup from "@/components/popup";
+import { useState } from "react";
 
 export default function Custom() {
   const width = useWindowWidth();
+  const [showPopup, setShowPopup] = useState(false);
 
+  const handlePopup = () => {
+    setShowPopup(!showPopup);
+  }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black" style={{
       maxWidth: width >= 640 ? "calc(100% - 325px)" : "100%"
@@ -25,8 +31,16 @@ export default function Custom() {
         <p>Хотите узнать больше о процессе создания украшений? </p>
         <p>Свяжитесь с нами! Мы с радостью расскажем вам обо всех этапах и поможем воплотить ваши самые смелые идеи в реальность.</p>
         <button className="text-black border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center"
-        style={{transition: ".4s ease"}}
+        style={{transition: ".4s ease"}} onClick={handlePopup}
         >Заказать</button>
+        <Popup 
+          gif={"https://media.tenor.com/0okJBma33jEAAAAi/cat-meme.gif"}
+          display={showPopup ? "flex" : "none"}
+          setShowPopup={setShowPopup}
+          className="h-[400px]"
+          title="Создайте украшение своей мечты"
+          message="Pасскажите нам о нем прямо сейчас"
+        />
         <div className="flex h-[300px] overflow-x-scroll my-10 custom-scrollbar">
           <Image alt="image" src={"/images/custom/photo_0x01.png"} height={"2000"} width={"2000"} className="w-auto h-full mr-2"/>
           <Image alt="image" src={"/images/custom/photo_0x02.png"} height={"2000"} width={"2000"} className="w-auto h-full mx-2"/>

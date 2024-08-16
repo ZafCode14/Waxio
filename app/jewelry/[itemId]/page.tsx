@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import data from '@/data/items';
 import useWindowWidth from '@/hooks/width';
+import Popup from '@/components/popup';
 
 interface Props {
   params: {
@@ -14,8 +15,13 @@ interface Props {
 
 const ItemPage = ({ params }: Props) => {
   const [activePhoto, setActivePhoto] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
   const { itemId } = params;
   const width = useWindowWidth();
+
+  const handlePopup = () => {
+    setShowPopup(prev => !prev);
+  }
 
   if (itemId > 29 || isNaN(itemId)) {
     notFound();
@@ -111,9 +117,18 @@ const ItemPage = ({ params }: Props) => {
         <button 
           className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
           style={{ transition: ".4s ease" }}
+          onClick={() => setShowPopup(prev => !prev)}
         >
           Заказать
         </button>
+        <Popup 
+          gif={"https://media.tenor.com/HLrXIleGBToAAAAi/transparent-cat.gif"}
+          display={showPopup ? "flex" : "none"}
+          setShowPopup={setShowPopup}
+          className=""
+          title="Наша корзина еще в разработке"
+          message="Вы можете оформить заказ через нашего менеджера"
+        />
         <p className='mt-2 pb-0'>Описание</p>
         <p 
           className='text-color-black text-[14px]' 
