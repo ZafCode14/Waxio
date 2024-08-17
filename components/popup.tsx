@@ -20,7 +20,7 @@ function Popup({ gif, display, setShowPopup, className, title, message }: GifPro
   const [overVk, setOverVk] = useState(false);
 
   return (
-    <div className="fixed bottom-0 left-0 flex justify-center items-center z-[3000]" style={{
+    <div className="fixed top-10 left-0 flex justify-center items-center z-[3000]" style={{
       width: width >= 640 ? "calc(100vw - 300px)" : "100vw",
       height: "calc(100vh - 70px)",
       display: display,
@@ -51,7 +51,7 @@ function Popup({ gif, display, setShowPopup, className, title, message }: GifPro
           <Vk color={overVk ? "white" : "black"} className="h-8 w-8 mr-4"/>
           <p className="text-[20px]" style={{
             color: overVk ? "white" : "black"
-          }}>Vkontakte</p>
+          }}>ВКонтакте</p>
         </Link>
       </div>
     </div>
