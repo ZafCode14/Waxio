@@ -268,7 +268,7 @@ const data: Item = {
     title: 'Браслет "knot gold"',
     price: 9100,
     description: 'Браслет с утонченным переплетением для представителей прекрасного пола. Доступно в нескольких вариантах покрытий.',
-    photo: ["photo1", "photo2", "photo3", "photo4", "photo5"],
+    photo: ["photo1", "photo2", "photo3", "photo4"],
     size: [],
   },
 }
