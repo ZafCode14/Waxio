@@ -101,9 +101,15 @@ function Header() {
           <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/custom")}>На заказ</p>
           <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/about")}>О нас</p>
           <div className="flex absolute bottom-[100px] right-[20px] items-center w-[70%] justify-end">
-            <Telegram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
-            <Vk color="black" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
-            <Instagram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
+            <Link href="https://t.me/waaxio" target="_blank" rel="noopener noreferrer">
+              <Telegram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
+            </Link>
+            <Link href="https://vk.com/waxiojwlr" target="_blank" rel="noopener noreferrer">
+              <Vk color="black" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
+            </Link>
+            <Link href="https://www.instagram.com/waxio.jwlr?igsh=MXVubGV1bWZmdjVkOA==" target="_blank" rel="noopener noreferrer">
+              <Instagram color="black" className="h-[30px] w-[30px] mr-4 cursor-pointer"/>
+            </Link>
           </div>
         </div>
       </div>

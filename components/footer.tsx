@@ -24,7 +24,9 @@ function Footer() {
             <Link href="https://vk.com/waxiojwlr" target="_blank" rel="noopener noreferrer">
               <Vk color="white" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
             </Link>
-            <Instagram color="white" className="h-[30px] w-[30px] mr-4 cursor-pointer"/>
+            <Link href="https://www.instagram.com/waxio.jwlr?igsh=MXVubGV1bWZmdjVkOA==" target="_blank" rel="noopener noreferrer">
+              <Instagram color="white" className="h-[30px] w-[30px] mr-4 cursor-pointer"/>
+            </Link>
           </div>
       </div>
     </footer>
