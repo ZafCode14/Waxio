@@ -91,7 +91,7 @@ const ItemPage = ({ params }: Props) => {
                     width={1920} 
                     height={1080} 
                     alt={`photo${itemId}`} 
-                    className="w-full object-cover" 
+                    className="w-full h-auto object-cover" 
                     priority 
                   />
                 </div>
