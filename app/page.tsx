@@ -11,7 +11,7 @@ export default function Home() {
       width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
       <section className="w-full h-[600px] bg-color-white mb-3 mt-[83px] relative overflow-hidden flex justify-center items-center">
-        <Image src={`/images/photo_0x0${width < 700 ? "1" : "2"}.png`} width={"2000"} height={"1000"} alt="waxio" className="absolute h-full object-cover" priority/>
+        <Image src={`/images/photo_0x0${width < 700 ? "1" : "2"}.png`} width={"2000"} height={"2000"} alt="waxio" className="absolute h-full object-cover" priority/>
         <div className="flex flex-col justify-end items-center p-3 h-full relative">
           <h1 className="text-[22px] text-center px-3 font-bold">Ваши идеи - наши заботы</h1>
           <Link className="w-full flex justify-center" href={'/custom'}>
