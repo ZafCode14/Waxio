@@ -209,8 +209,12 @@ function Jewelryyy() {
                 <div className="overflow-hidden flex justify-center items-center mb-2 h-auto">
                   <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
                 </div>
-                <p className="p-0 font-normal text-[12px]">{item.title}</p>
-                <p className="p-0 font-normal text-[14px] text-color-balck">{formatPrice(item.price)} руб</p>
+                <p className="p-0 font-normal" style={{
+                  fontSize: width > 910 ? "16px" : "12px"
+                }}>{item.title}</p>
+                <p className="p-0 font-normal text-color-balck" style={{
+                  fontSize: width > 910 ? "18px" : "14px"
+                }}>{formatPrice(item.price)} руб</p>
               </div>
             </Link>
           ) : null;

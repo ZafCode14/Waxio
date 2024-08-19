@@ -119,8 +119,13 @@ const ItemPage = ({ params }: Props) => {
         <div className='px-3' style={{
           width: width > 1200 ? "40%" : "100%"
         }}>
-          <p className='mt-4'>{data[itemId].title}</p>
-          <p className='font-normal'>{formatPrice(data[itemId].price)} руб</p>
+          <h3 className='mt-4' style={{
+            fontWeight: "bold",
+            fontSize: width > 910 ? "20px" : "16px"
+          }}>{data[itemId].title}</h3>
+          <p className='font-normal' style={{
+            fontSize: width > 910 ? "18px" : "16px"
+          }}>{formatPrice(data[itemId].price)} руб</p>
           <button 
             className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
             style={{ transition: ".4s ease" }}
@@ -140,7 +145,9 @@ const ItemPage = ({ params }: Props) => {
           <p 
             className='text-color-black text-[14px]' 
             dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br/>') }}
-          ></p>
+          style={{
+            fontSize: width > 910 ? "16px" : "14px"
+          }}></p>
         </div>
       </div>
     </main>
