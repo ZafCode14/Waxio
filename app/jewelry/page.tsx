@@ -206,7 +206,7 @@ function Jewelryyy() {
                   backgroundPosition: "center",
                 }}
               >
-                <div className="overflow-hidden flex justify-center items-center mb-2 h-[280px]">
+                <div className="overflow-hidden flex justify-center items-center mb-2 h-auto">
                   <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
                 </div>
                 <p className="p-0 font-normal text-[12px]">{item.title}</p>
