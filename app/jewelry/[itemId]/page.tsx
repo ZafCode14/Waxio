@@ -71,69 +71,77 @@ const ItemPage = ({ params }: Props) => {
   });
 
   return (
-    <main className="flex flex-col items-center min-h-screen px-3 max-w-screen" style={{
+    <main className="flex flex-col items-center min-h-screen max-w-screen" style={{
       width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
-      <div className='w-[800px] max-w-full flex flex-col'>
-        <p className="mt-20 mb-2 self-start text-color-black">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
-        <div {...handlers} className='w-[400px] h-[400px] max-h-[92vw] max-w-full relative overflow-hidden'>
-          <div 
-            className='flex transition-transform ease-in-out duration-500'
-            style={{ transform: `translateX(-${(activePhoto - 1) * 100}%)` }}
-          >
+      <p className="mt-20 mb-2 self-start text-color-black px-3">Украшения &gt; {turnCollectionToName(data[itemId].collection)} &gt; {data[itemId].title}</p>
+      <div className='max-w-full flex flex-wrap justify-center w-[1200px]'>
+        <div className='px-3 w-[700px]' style={{
+          maxWidth: width > 1200 ? "60%" : "100%"
+        }}>
+          <div {...handlers} className='relative overflow-hidden'>
+            <div 
+              className='flex transition-transform ease-in-out duration-500'
+              style={{ transform: `translateX(-${(activePhoto - 1) * 100}%)` }}
+            >
+              {data[itemId].photo.map((photo, index) => (
+                <div key={index} className='w-full flex-shrink-0'>
+                  <Image 
+                    src={`/images/items/${itemId}/${photo}.png`} 
+                    width={1920} 
+                    height={1080} 
+                    alt={`photo${itemId}`} 
+                    className="w-full object-cover" 
+                    priority 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className='flex overflow-hidden mt-2'>
             {data[itemId].photo.map((photo, index) => (
-              <div key={index} className='w-full h-full flex-shrink-0'>
-                <Image 
-                  src={`/images/items/${itemId}/${photo}.png`} 
-                  width={1920} 
-                  height={1080} 
-                  alt={`photo${itemId}`} 
-                  className="h-full w-full object-cover" 
-                  priority 
-                />
-              </div>
+              <Image 
+                key={photo} 
+                src={`/images/items/${itemId}/${photo}.png`} 
+                width={80} 
+                height={80} 
+                alt={`photo${itemId}`} 
+                className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" 
+                priority 
+                onClick={() => handleImageClick(index)} 
+                style={{
+                  border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
+                }}
+              />
             ))}
           </div>
         </div>
-        <div className='flex overflow-hidden mt-2'>
-          {data[itemId].photo.map((photo, index) => (
-            <Image 
-              key={photo} 
-              src={`/images/items/${itemId}/${photo}.png`} 
-              width={80} 
-              height={80} 
-              alt={`photo${itemId}`} 
-              className="h-[50px] w-[50px] cursor-pointer object-cover mr-2" 
-              priority 
-              onClick={() => handleImageClick(index)} 
-              style={{
-                border: index + 1 === activePhoto ? "2px solid black" : "1px solid gray"
-              }}
-            />
-          ))}
+        <div className='px-3' style={{
+          width: width > 1200 ? "40%" : "100%"
+        }}>
+          <p className='mt-4'>{data[itemId].title}</p>
+          <p className='font-normal'>{formatPrice(data[itemId].price)} руб</p>
+          <button 
+            className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
+            style={{ transition: ".4s ease" }}
+            onClick={() => setShowPopup(prev => !prev)}
+          >
+            Заказать
+          </button>
+          <Popup 
+            gif={"https://media.tenor.com/HLrXIleGBToAAAAi/transparent-cat.gif"}
+            display={showPopup ? "flex" : "none"}
+            setShowPopup={setShowPopup}
+            className=""
+            title="Наша корзина еще в разработке"
+            message="Вы можете оформить заказ через нашего менеджера"
+          />
+          <p className='mt-2 pb-0'>Описание</p>
+          <p 
+            className='text-color-black text-[14px]' 
+            dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br/>') }}
+          ></p>
         </div>
-        <p className='mt-4'>{data[itemId].title}</p>
-        <p className='font-normal'>{formatPrice(data[itemId].price)} руб</p>
-        <button 
-          className="border-2 border-black py-3 w-[300px] mt-5 hover:bg-black hover:text-white self-center md:self-start font-bold"
-          style={{ transition: ".4s ease" }}
-          onClick={() => setShowPopup(prev => !prev)}
-        >
-          Заказать
-        </button>
-        <Popup 
-          gif={"https://media.tenor.com/HLrXIleGBToAAAAi/transparent-cat.gif"}
-          display={showPopup ? "flex" : "none"}
-          setShowPopup={setShowPopup}
-          className=""
-          title="Наша корзина еще в разработке"
-          message="Вы можете оформить заказ через нашего менеджера"
-        />
-        <p className='mt-2 pb-0'>Описание</p>
-        <p 
-          className='text-color-black text-[14px]' 
-          dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br/>') }}
-        ></p>
       </div>
     </main>
   );

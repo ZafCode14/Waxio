@@ -186,7 +186,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap w-[900px] max-w-[100%] justify-around">
+      <div className="flex flex-wrap max-w-[100%] justify-center w-[1200px]">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType.includes(item.type);
@@ -206,7 +206,7 @@ function Jewelryyy() {
                   backgroundPosition: "center",
                 }}
               >
-                <div className="max-h-[45vw] h-[250px] overflow-hidden flex justify-center items-center mb-2">
+                <div className="overflow-hidden flex justify-center items-center mb-2">
                   <Image src={`/images/items/${key}/photo1.png`} width={"800"} height={"100"} alt={`photo${key}`} priority/>
                 </div>
                 <p className="p-0 font-normal text-[12px]">{item.title}</p>
