@@ -186,7 +186,7 @@ function Jewelryyy() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap max-w-[100%] justify-center w-[1200px]">
+      <div className="flex flex-wrap max-w-[100%] justify-center w-[1300px]">
         {sortedData.map(([key, item]) => {
           // Check if type or collection is 'all' or matches the item
           const isTypeMatch = selectedType.includes(item.type);
@@ -200,7 +200,7 @@ function Jewelryyy() {
           return isTypeMatch && isCollectionMatch ? (
             <Link key={key} href={`/jewelry/${key}`}  
             // Using the key to dynamically create the URL
-              className="w-[250px] max-w-[48%] mx-[1%] mb-5 flex-col items-center text-center">
+              className="w-[280px] max-w-[48%] mx-[1%] mb-5 flex-col items-center text-center">
               <div className="flex flex-col items-center mb-3 cursor-pointer" style={{
                   backgroundSize: "cover",
                   backgroundPosition: "center",
