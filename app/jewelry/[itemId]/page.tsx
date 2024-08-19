@@ -141,7 +141,9 @@ const ItemPage = ({ params }: Props) => {
             title="Наша корзина еще в разработке"
             message="Вы можете оформить заказ через нашего менеджера"
           />
-          <p className='mt-2 pb-0'>Описание</p>
+          <p className='mt-2 pb-0' style={{
+            fontSize: width > 910 ? "18px" : "16px"
+          }}>Описание</p>
           <p 
             className='text-color-black text-[14px]' 
             dangerouslySetInnerHTML={{ __html: data[itemId].description.replace(/\n/g, '<br/>') }}
