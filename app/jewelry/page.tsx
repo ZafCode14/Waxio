@@ -127,14 +127,14 @@ function Jewelryyy() {
         selectedType.length > 1 ? `${selectedType.length === 5 ? "Все Украшения" : `${turnTypeToname(selectedType[0])}, ...`}` : turnTypeToname(selectedType[0])
       }</p>
       <div className="flex w-full justify-end items-start mb-4">
-        <div className="flex flex-col">
+        <div className="flex flex-col relative">
           <div ref={filterBtn} className="flex items-center justify-end relative cursor-pointer" onClick={handleFilter}>
             <p>Фильтр</p>
             <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-2" style={{
               transform: showFilter ? "rotate(180deg)" : "rotate(0)"
             }}/>
           </div>
-          <div ref={filterRef} className={`flex flex-col overflow-hidden absolute lg:right-[300px] right-0 mt-10 mr-3 px-3 bg-color-white`} style={{
+          <div ref={filterRef} className={`flex flex-col overflow-hidden absolute right-0 mt-10 mr-3 px-3 bg-color-white`} style={{
             transition: ".4s ease",
             height: !showFilter ? "0px" : "310px",
             border: !showFilter ? "none" : "1px solid black"
