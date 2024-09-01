@@ -65,7 +65,7 @@ const ItemPageClient = ({ itemId }: ItemPageClientProps) => {
 
   return (
     <main
-      className="flex flex-col items-center min-h-screen max-w-screen"
+      className="flex flex-col items-center min-h-screen max-w-screen relative z-0"
       style={{
         width: width >= 640 ? "calc(100% - 300px)" : "100%",
       }}

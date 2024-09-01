@@ -12,7 +12,7 @@ export default function Custom() {
     setShowPopup(!showPopup);
   }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black" style={{
+    <main className="flex min-h-screen flex-col items-center justify-between mx-3 font-bold text-color-black relative z-0" style={{
       maxWidth: width >= 640 ? "calc(100% - 325px)" : "100%"
     }}>
       <div className="max-w-[100%] md:w-[900px] flex flex-col">

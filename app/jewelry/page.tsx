@@ -118,7 +118,7 @@ function Jewelryyy() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col px-3 items-center" style={{
+    <main className="flex min-h-screen flex-col px-3 items-center z-0 relative" style={{
       width: width >= 640 ? "calc(100% - 300px)" : "100%"
     }}>
       <p className="mt-20 self-start">Украшения &gt; {

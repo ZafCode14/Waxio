@@ -5,7 +5,7 @@ export default function About() {
   const width = useWindowWidth();
 
   return (
-    <main className="flex flex-col items-center mx-3 font-bold text-color-black" style={{
+    <main className="relative z-0 flex flex-col items-center mx-3 font-bold text-color-black" style={{
       minHeight: "calc(100vh - 60px)",
       maxWidth: width >= 640 ? "calc(100% - 325px)" : "100%"
     }}>
