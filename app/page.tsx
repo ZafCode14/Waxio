@@ -77,27 +77,29 @@ export default function Home() {
             name={"FRACTURE"}
           />
         </div>
-        <div className={`sm:hidden absolute z-10 flex justify-center w-full mt-[215px]`}>
-          <div className={`
-            ${scrollPercentage <= 16.15 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
-            w-1 h-1 m-1 
-            rounded-full
-          `}></div>
-          <div className={`
-            ${scrollPercentage > 16.15 && scrollPercentage <= 50 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
-            w-1 h-1 m-1 
-            rounded-full
-          `}></div>
-          <div className={`
-            ${scrollPercentage > 50 && scrollPercentage <= 83 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
-            w-1 h-1 m-1 
-            rounded-full
-          `}></div>
-          <div className={`
-            ${scrollPercentage > 83 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
-            w-1 h-1 m-1 
-            rounded-full
-          `}></div>
+        <div className="relative">
+          <div className={`sm:hidden absolute z-10 flex justify-center w-full bottom-1`}>
+            <div className={`
+              ${scrollPercentage <= 16.15 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
+              w-1 h-1 m-1 
+              rounded-full
+            `}></div>
+            <div className={`
+              ${scrollPercentage > 16.15 && scrollPercentage <= 50 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
+              w-1 h-1 m-1 
+              rounded-full
+            `}></div>
+            <div className={`
+              ${scrollPercentage > 50 && scrollPercentage <= 83 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
+              w-1 h-1 m-1 
+              rounded-full
+            `}></div>
+            <div className={`
+              ${scrollPercentage > 83 ? "bg-[#ffffff]" : "bg-[#8E8E8D]"} 
+              w-1 h-1 m-1 
+              rounded-full
+            `}></div>
+          </div>
         </div>
       </section>
 

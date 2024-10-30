@@ -152,7 +152,7 @@ const ItemPageClient = ({ itemId }: ItemPageClientProps) => {
               ))}
             </div>
           </div>
-          <div className="flex overflow-hidden mt-2">
+          <div className="flex overflow-x-auto mt-2">
             {data[itemId].photo.map((photo, index) => (
               <Image
                 key={photo}
@@ -202,7 +202,7 @@ const ItemPageClient = ({ itemId }: ItemPageClientProps) => {
       {/** Items from collection */}
       <div className={`max-w-full mt-5 pl-5 sm:mt-10 w-[1200px]`}>
         <p className={`text-[12px] sm:text-[20px] sm:mb-8`}>Вам может понравиться</p>
-        <div className={`flex overflow-x-auto`}>
+        <div className={`flex overflow-x-auto w-full`}>
           {
             itemsFromCollection.map((item, index) => {
               return (
