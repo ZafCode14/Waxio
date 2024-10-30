@@ -1,125 +1,85 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import Telegram from "./telegram";
-import Vk from "./vk";
-import Instagram from "./instagram";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function Header() {
-  const router = useRouter();
-  const [width, setWidth] = useState(0);
-  const [showNav, setShowNav] = useState(false);
-  const [showType, setShowType] = useState(false);
-  const [showCollection, setShowCollection] = useState(false);
+  const p = usePathname();
+  const [cartCount, setCartCount] = useState(0);
 
-  const menuRef = useRef<HTMLDivElement>(null); // Reference to the filter div
+  // Function to retrieve cart items from localStorage
+  const getCartItems = () => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCartCount(cartItems.length); // Update the cart count
+  };
 
+  // Initial load of cart items
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    handleResize();
-    window.scrollTo(0, 0);
+    getCartItems(); // Retrieve cart count when component mounts
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current?.contains(event.target as Node)) {
-        setShowNav(false); // Hide Nav if clicked outside
-      }
+    // Listen to 'storage' event and 'cart-updated' event to detect changes in localStorage
+    const handleStorageChange = () => {
+      getCartItems(); // Update cart count when storage or cart is updated
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("cart-updated", handleStorageChange); // Listen to custom event
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("cart-updated", handleStorageChange); // Cleanup event listener
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleNav = () => {
-    setShowNav(!showNav);
-  }
-  const handleType = () => {
-    setShowType(!showType);
-  }
-  const handleCollection = () => {
-    setShowCollection(!showCollection);
-  }
-
-  const handleLinkClick = (href: string) => {
-    handleNav();
-    router.push(href);
-  }
 
   return (
-    <header className="w-full h-[70px] text-black fixed top-0 px-3 z-50 bg-color-yellow">
-      <div ref={menuRef} className="absolute bg-color-yellow w-[300px] h-screen flex flex-col items-end" style={{
-        right: showNav ? "0" : `${width >= 640 ? "0" : "-300px"}`, 
-        transition: ".4s ease",
-        zIndex: "1000"
-        }}>
-        <Image src={"/icons/x.svg"} width={"100"} height={"100"} alt="exit" className="h-[20px] w-[20px] m-4 cursor-pointer" onClick={handleNav} priority style={{
-          display: width >= 640 ? "none" : "block"
-        }}/>
-        <div className="flex-1 flex flex-col self-start ml-[50px] w-full mt-5">
-          <div className="flex flex-col relative cursor-pointer justify-center sm:mt-14" onClick={handleType}>
-            <p className="text-[20px]">Украшения</p>
-            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-[160px] absolute" style={{
-              transform: showType ? "rotate(180deg)" : "rotate(0deg)"
-            }}/>
-          </div>
-          <div className="overflow-hidden ml-4 flex flex-col" style={{height: !showType ? "0" : "190px", transition: ".5s ease"}}>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring")}>Кольца</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=pendant")}>Подвески</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=bracelet")}>Браслеты</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=earring")}>Серьги</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=accessory")}>Аксессуары</p>
-            <p className="cursor-pointer font-normal py-1" onClick={() => handleLinkClick("/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>Все Украшения</p>
-          </div>
-          <div className="flex flex-col cursor-pointer justify-center mt-4" onClick={handleCollection}>
-            <p className="text-[20px]">Коллекции</p>
-            <Image src={"/icons/more.svg"} width={"100"} height={"100"} alt="more" className="h-[14px] w-[14px] ml-[160px] absolute" style={{
-              transform: showCollection ? "rotate(180deg)" : "rotate(0deg)"
-            }}/>
-          </div>
-          <div className="overflow-hidden ml-4" style={{height: !showCollection ? "0" : "195px", transition: ".5s ease"}}>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=waxio-britva&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>WAXIO / BRITVA</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=skeleton&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>SKELETON</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=geometric&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>GEOMETRIC</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=pohui&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>POHUI</p>
-            <p className="cursor-pointer font-normal" onClick={() => handleLinkClick("/jewelry?collection=fracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory")}>FRACTURE</p>
-          </div>
-          <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/custom")}>На заказ</p>
-          <p className="cursor-pointer text-[20px] mt-4" onClick={() => handleLinkClick("/about")}>О нас</p>
-          <div className="flex absolute bottom-[100px] right-[20px] items-center w-[70%] justify-end">
-            <Link href="https://t.me/waaxio" target="_blank" rel="noopener noreferrer">
-              <Telegram color="black" className="h-[30px] w-[30px] cursor-pointer"/>
-            </Link>
-            <Link href="https://vk.com/waxiojwlr" target="_blank" rel="noopener noreferrer">
-              <Vk color="black" className="h-[30px] w-[30px] mx-4 cursor-pointer"/>
-            </Link>
-            <Link href="https://www.instagram.com/waxio.jwlr?igsh=MXVubGV1bWZmdjVkOA==" target="_blank" rel="noopener noreferrer">
-              <Instagram color="black" className="h-[30px] w-[30px] mr-4 cursor-pointer"/>
-            </Link>
-          </div>
+    <header className={`w-full text-black fixed top-0 z-50 ${p === '/' ? "bg-[#8e8e8dc7]" : "bg-[#8e8e8d]"} flex items-center justify-center`}>
+      <div className={`w-full flex flex-col items-center justify-center`}>
+        {/** Logo for the header mobile view */}
+        <div className={`
+          flex justify-around items-center 
+          h-[50px]
+          lg:h-[80px]
+          w-[1000px] max-w-full
+        `}>
+          <Link href={`/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory`} className={`hidden lg:block ${p.startsWith('/jewelry') && "font-bold"}`}>Украшения</Link>
+          <Link href={'/custom'} className={`hidden lg:block ${p.startsWith('/custom') && "font-bold"}`}>На заказ</Link>
+
+          <Link href={'/'}>
+            <Image
+              src={'/icons/logo.svg'}
+              alt="Logo"
+              width={50}
+              height={50}
+              className={`h-full w-[60px] object-contain sm:w-[100px]`}
+            />
+          </Link>
+
+          <Link href={'/about'} className={`hidden lg:block ${p.startsWith('/about') && "font-bold"}`}>О нас</Link>
+          <Link href={'/cart'} className={`hidden lg:flex ${p.startsWith('/cart') && "bg-[#7e7e7e]"} w-[50px] h-[50px] justify-center items-center rounded-full`}>
+            <Image
+              src={'/icons/cartHeader.svg'}
+              alt="Logo"
+              width={50}
+              height={50}
+              className={`h-full w-[24px] object-contain`}
+            />
+            <div className={`relative`}>
+              <div className={`${cartCount < 1 && "hidden"} absolute w-5 h-5 flex justify-center items-center bg-[red] text-white rounded-full bottom-2 left-0 text-[14px]`}>{cartCount}</div>
+            </div>
+          </Link>
         </div>
-      </div>
-      <div className="flex justify-between items-center h-full">
-        <Link href={"/"}>
-          <Image src={"/icons/waxio.svg"} width={"100"} height={"100"} alt="waxio" className="h-[100px] w-[100px] cursor-pointer" priority/>
-        </Link>
-        <Image src={"/icons/menu.svg"} width={"100"} height={"100"} alt="menu" className="h-[30px] w-[30px] cursor-pointer" onClick={handleNav} style={{
-          transform: "scaleY(0.8)"
-        }}/>
+
+        {/** Nav for the mobile view */}
+        <div className={`
+          ${p === '/' ? "bg-[#e4e4e4cb]" : "bg-[#E4E4E4]"}
+          h-[40px]
+          flex w-full justify-around items-center 
+          text-[12px] sm:text-[16px]
+          lg:hidden
+        `}>
+          <Link href={`/jewelry?collection=%2Cskeleton%2Cgeometric%2Cpohui%2Cwaxio-britva%2Cother%2Cfracture&type=ring%2Cpendant%2Cearring%2Cbracelet%2Caccessory`} className={`${p.startsWith('/jewelry') && "font-bold"}`}>Украшения</Link>
+          <Link href={'/custom'} className={`${p.startsWith('/custom') && "font-bold"}`}>На заказ</Link>
+          <Link href={'/about'} className={`${p.startsWith('/about') && "font-bold"}`}>О нас</Link>
+        </div>
       </div>
     </header>
   );
